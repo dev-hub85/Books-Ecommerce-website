@@ -2,9 +2,46 @@ nav{
     position: sticky;
     top: 0;
     z-index: 5;
+    background-color: white;
+}
+
+input {
+    border-radius: 50px;
+    width: 350px;
+    height: 50px;
+}
+
+button {
+    border-radius: 100px;
+    height: 50px;
+    width: 50px;
     background-color: rgb(61, 61, 255);
 }
 
-*{
+button:hover {
+    background-color: rgb(97, 97, 253);
+}
+
+svg {
     color: white;
+}
+
+.navbar-nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+}
+.cart{
+    top: 0px;
+    right: 0px;
+    width: 15px;
+    height: 16px;
+    background-color: rgb(231, 61, 61);
+    border-radius: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+
 }

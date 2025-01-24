@@ -1,0 +1,9 @@
+<section>
+    <ol>
+    @if(categories_list){
+        @for(category of categories_list; track category){
+          <li>{{category}}</li>  
+        }
+    }
+    </ol>
+</section>
