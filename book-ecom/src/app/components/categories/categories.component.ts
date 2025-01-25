@@ -10,6 +10,7 @@ export class CategoriesComponent {
   dataUrl: any = 'jsonfiles/booksdata.json';
   data: any = [];
   categories_list: any = [];
+  category: string = '';
 
   ngOnInit() {
     fetch(this.dataUrl)
@@ -20,8 +21,11 @@ export class CategoriesComponent {
         this.data = data;
         this.categories_list = [];
         for (let i = 0; i < this.data.length; i++) {
-          if (!this.categories_list.includes(this.data[i]['category'])) {
-            this.categories_list.push(this.data[i]['category']);
+          this.category =
+            this.data[i]['category'][0].toUpperCase() +
+            this.data[i]['category'].slice(1).toLowerCase();
+          if (!this.categories_list.includes(this.category)) {
+            this.categories_list.push(this.category);
           }
           console.log(this.data[i]);
         }

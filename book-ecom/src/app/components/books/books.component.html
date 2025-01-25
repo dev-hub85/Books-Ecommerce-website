@@ -1,0 +1,70 @@
+<section id="foryou-section">
+    <div id="titlebar">
+        <h2>Featured For You</h2>
+        <div id="buttons">
+            <button class="btn btn-primary" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-chevron-left"
+                viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+            </svg>
+            </button>
+            <button class="btn btn-primary" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-chevron-right"
+                    viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div id="foryou">
+    @if(forubooks){
+    @for(book of forubooks; track book){
+    <div class="card-design">
+        <div class="card">
+            <img [src]="book['img']" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ book['title'] }}</h5>
+                <p class="card-text">${{ book['price'] }}</p>
+            </div>
+        </div>
+    </div>
+    }}
+    </div>
+</section>
+<section id="foryou-section">
+    <div id="titlebar">
+        <h2>Top Books</h2>
+        <div id="buttons">
+            <button class="btn btn-primary" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-chevron-left"
+                    viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                </svg>
+            </button>
+            <button class="btn btn-primary" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-chevron-right"
+                    viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div id="foryou">
+        @if(topbooks){
+        @for(book of topbooks; track book){
+        <div class="card-design">
+            <div class="card">
+                <img [src]="book['img']" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book['title'] }}</h5>
+                    <p class="card-text">${{ book['price'] }}</p>
+                </div>
+            </div>
+        </div>
+        }}
+    </div>
+</section>

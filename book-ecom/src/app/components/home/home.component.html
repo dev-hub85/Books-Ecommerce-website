@@ -1,26 +1,2 @@
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active position-relative">
-            <img [src]="image1Url" class="d-block w-100 h-50 object-fit-cover" id="coverimage" alt="Image of Library">
-            <div class="position-absolute top-50 start-50 translate-middle">
-                <div class="container d-flex justify-content-center align-items-center flex-column">
-                    <img [src]="logo" alt="logo image" class="logo">
-                    <h1 class="display-6 mt-3 fs-1 fw-bold">Welcome to Book Store</h1>
-                    <form class="d-flex position-relative" role="search">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn position-absolute end-0 top-50 translate-middle-y" type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div>
-    <app-categories></app-categories>
-</div>
+<app-carousel></app-carousel>
+<app-books></app-books>
