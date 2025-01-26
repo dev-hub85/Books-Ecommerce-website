@@ -11,6 +11,8 @@ export class BooksComponent {
   forubooks: any = [];
   alltopbooks: any = [];
   topbooks: any = [];
+  allpopularbooks: any = [];
+  popularbooks: any = [];
 
   ngOnInit() {
     fetch(this.dataUrl)
@@ -19,10 +21,21 @@ export class BooksComponent {
         this.all_data = data;
         this.forubooks = this.getRandomBooks(this.all_data, 20);
         this.gettopbooks();
+        this.getpopularbooks();
       })
       .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);
       });
+  }
+
+  getpopularbooks() {
+    this.allpopularbooks = [];
+    for (let i = 0; i < this.all_data.length; i++) {
+      if (this.all_data[i]['availability'] <= 50) {
+        this.allpopularbooks.push(this.all_data[i]);
+      }
+    }
+    this.popularbooks = this.getRandomBooks(this.allpopularbooks, 20);
   }
 
   gettopbooks() {
@@ -48,5 +61,18 @@ export class BooksComponent {
     }
 
     return result;
+  }
+
+  scrollHorizontallyLeft(component: string): void {
+    const container = document.querySelector(component) as HTMLElement;
+    if (container) {
+      container.scrollBy({ left: 500, behavior: 'smooth' }); // Scroll by 300px horizontally
+    }
+  }
+  scrollHorizontallyRight(component: string): void {
+    const container = document.querySelector(component) as HTMLElement;
+    if (container) {
+      container.scrollBy({ left: -500, behavior: 'smooth' }); // Scroll by 300px horizontally
+    }
   }
 }

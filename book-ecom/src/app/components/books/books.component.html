@@ -1,70 +1,304 @@
 <section id="foryou-section">
-    <div id="titlebar">
-        <h2>Featured For You</h2>
-        <div id="buttons">
-            <button class="btn btn-primary" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-chevron-left"
-                viewBox="0 0 20 20">
-                <path fill-rule="evenodd"
-                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-            </svg>
-            </button>
-            <button class="btn btn-primary" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-chevron-right"
-                    viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-                </svg>
-            </button>
-        </div>
+  <div id="titlebar">
+    <h2 #foryoubooks>Featured For You</h2>
+    <div id="buttons">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyRight('.allforyoubooks')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-left"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+          />
+        </svg>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyLeft('.allforyoubooks')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-right"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+      </button>
     </div>
-    <div id="foryou">
-    @if(forubooks){
-    @for(book of forubooks; track book){
+  </div>
+  <div id="foryou" class="allforyoubooks">
+    @if(forubooks){ @for(book of forubooks; track book){ @defer(on
+    viewport(foryoubooks)) {
     <div class="card-design">
-        <div class="card">
-            <img [src]="book['img']" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ book['title'] }}</h5>
-                <p class="card-text">${{ book['price'] }}</p>
+      <div class="card">
+        <img [src]="book['img']" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ book["title"] }}</h5>
+          <div
+            class="d-flex flex-row justify-content-between align-items-center m-0"
+          >
+            <p class="card-text">${{ book["price"] }}</p>
+            <div class="basket">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-basket-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"
+                />
+              </svg>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    }}
+    }@placeholder (minimum 3000ms){
+    <div class="card-design">
+      <div class="card placeholder-glow">
+        <img [src]="" class="card-img-top placeholder w-100" alt="" />
+        <div class="card-body">
+          <h5 class="card-title placeholder-glow">
+            <span class="placeholder col-8 row-cols-2"></span
+            ><span class="placeholder col-8"></span>
+          </h5>
+          <div
+            class="d-flex flex-row justify-content-between align-items-center m-0 placeholder-glow"
+          >
+            <span class="placeholder col-4 mb-0"></span>
+            <div
+              class="placeholder-glow basket w-100 h-100 d-flex justify-content-end mt-2"
+            >
+              <span
+                class="placeholder col-2 rounded-circle w-0 h-100 p-3"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    } }}
+  </div>
 </section>
 <section id="foryou-section">
-    <div id="titlebar">
-        <h2>Top Books</h2>
-        <div id="buttons">
-            <button class="btn btn-primary" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-chevron-left"
-                    viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-                </svg>
-            </button>
-            <button class="btn btn-primary" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-chevron-right"
-                    viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-                </svg>
-            </button>
-        </div>
+  <div id="titlebar">
+    <h2 #alltopbooks>Top Books</h2>
+    <div id="buttons">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyRight('.alltbooks')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-left"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+          />
+        </svg>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyLeft('.alltbooks')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-right"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+      </button>
     </div>
-    <div id="foryou">
-        @if(topbooks){
-        @for(book of topbooks; track book){
-        <div class="card-design">
-            <div class="card">
-                <img [src]="book['img']" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ book['title'] }}</h5>
-                    <p class="card-text">${{ book['price'] }}</p>
-                </div>
+  </div>
+  <div id="foryou" class="alltbooks">
+    @if(topbooks){ @for(book of topbooks; track book){ @defer(on
+    viewport(alltopbooks)){
+    <div class="card-design">
+      <div class="card">
+        <img [src]="book['img']" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ book["title"] }}</h5>
+          <div
+            class="d-flex flex-row justify-content-between align-items-center m-0"
+          >
+            <p class="card-text">${{ book["price"] }}</p>
+            <div class="basket">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-basket-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"
+                />
+              </svg>
             </div>
+          </div>
         </div>
-        }}
+      </div>
     </div>
+    }@placeholder(minimum 3000ms){
+    <div class="card-design">
+      <div class="card placeholder-glow">
+        <img [src]="" class="card-img-top placeholder" alt="" />
+        <div class="card-body">
+          <h5 class="card-title placeholder-glow">
+            <span class="placeholder col-8 row-cols-2"></span
+            ><span class="placeholder col-8"></span>
+          </h5>
+          <div
+            class="d-flex flex-row justify-content-between align-items-center m-0 placeholder-glow"
+          >
+            <span class="placeholder col-4 mb-0"></span>
+            <div
+              class="placeholder-glow basket w-100 h-100 d-flex justify-content-end mt-2"
+            >
+              <span
+                class="placeholder col-2 rounded-circle w-0 h-100 p-3"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    } }}
+  </div>
+</section>
+<section id="foryou-section">
+  <div id="titlebar">
+    <h2 #allpopularbooks>Popular Books</h2>
+    <div id="buttons">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyRight('.popbooks')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-left"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+          />
+        </svg>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyLeft('.popbooks')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-right"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="foryou" class="popbooks">
+    @if(popularbooks){ @for(book of popularbooks; track book){ @defer(on
+    viewport(allpopularbooks)){
+    <div class="card-design">
+      <div class="card">
+        <img [src]="book['img']" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ book["title"] }}</h5>
+          <div
+            class="d-flex flex-row justify-content-between align-items-center m-0"
+          >
+            <p class="card-text">${{ book["price"] }}</p>
+            <div class="basket">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-basket-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }@placeholder(minimum 3000ms) {
+    <div class="card-design">
+      <div class="card placeholder-glow">
+        <img [src]="" class="card-img-top placeholder" alt="" />
+        <div class="card-body">
+          <h5 class="card-title placeholder-glow">
+            <span class="placeholder col-8 row-cols-2"></span
+            ><span class="placeholder col-8"></span>
+          </h5>
+          <div
+            class="d-flex flex-row justify-content-between align-items-center m-0 placeholder-glow"
+          >
+            <span class="placeholder col-4 mb-0"></span>
+            <div
+              class="placeholder-glow basket w-100 h-100 d-flex justify-content-end mt-2"
+            >
+              <span
+                class="placeholder col-2 rounded-circle w-0 h-100 p-3"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    } }}
+  </div>
 </section>
