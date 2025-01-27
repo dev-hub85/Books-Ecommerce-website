@@ -27,10 +27,7 @@ export class CategoriesComponent {
           if (!this.categories_list.includes(this.category)) {
             this.categories_list.push(this.category);
           }
-          console.log(this.data[i]);
         }
-
-        console.log(this.categories_list);
       })
       .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 
 @Component({
   selector: 'app-books',
@@ -13,7 +13,7 @@ export class BooksComponent {
   topbooks: any = [];
   allpopularbooks: any = [];
   popularbooks: any = [];
-
+  cartdata: any[] = [];
   ngOnInit() {
     fetch(this.dataUrl)
       .then((response) => response.json())
@@ -59,7 +59,6 @@ export class BooksComponent {
         result.push(arr[randomIndex]);
       }
     }
-
     return result;
   }
 
@@ -74,5 +73,17 @@ export class BooksComponent {
     if (container) {
       container.scrollBy({ left: -500, behavior: 'smooth' }); // Scroll by 300px horizontally
     }
+  }
+
+  addtocart(title: string) {
+    const existingBook = this.cartdata.find((book) => book.title === title);
+    if (existingBook) {
+      existingBook.quantity++;
+      localStorage.setItem('book', JSON.stringify(this.cartdata));
+    } else {
+      this.cartdata.push({ title: title, quantity: 1 });
+      localStorage.setItem('book', JSON.stringify(this.cartdata));
+    }
+    console.log(this.cartdata);
   }
 }

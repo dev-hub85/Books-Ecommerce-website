@@ -6,7 +6,7 @@ import { BooksComponent } from "../books/books.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CategoriesComponent, CarouselComponent, BooksComponent],
+  imports: [CarouselComponent, BooksComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
