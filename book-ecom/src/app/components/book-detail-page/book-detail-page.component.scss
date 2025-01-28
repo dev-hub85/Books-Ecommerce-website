@@ -1,0 +1,42 @@
+.icon-hover:hover {
+  border-color: #3b71ca !important;
+  background-color: white !important;
+  color: #3b71ca !important;
+}
+
+.icon-hover:hover i {
+  color: #3b71ca !important;
+}
+.book-detail {
+  margin-top: 12%;
+  margin-bottom: 12%;
+}
+.stars-container {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 24px;
+  color: gold;
+}
+
+.half-star {
+  color: gray;
+}
+
+.empty-star {
+  color: lightgray;
+}
+
+.cart-image{
+  fill : white;
+  width: 18px;
+  height: 18px;
+}
+
+input:focus{
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
