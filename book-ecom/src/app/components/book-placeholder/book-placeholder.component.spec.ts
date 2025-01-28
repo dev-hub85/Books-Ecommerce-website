@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BookscatComponent } from './bookscat.component';
+import { BookPlaceholderComponent } from './book-placeholder.component';
 
-describe('BookscatComponent', () => {
-  let component: BookscatComponent;
-  let fixture: ComponentFixture<BookscatComponent>;
+describe('BookPlaceholderComponent', () => {
+  let component: BookPlaceholderComponent;
+  let fixture: ComponentFixture<BookPlaceholderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BookscatComponent]
+      imports: [BookPlaceholderComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BookscatComponent);
+    fixture = TestBed.createComponent(BookPlaceholderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

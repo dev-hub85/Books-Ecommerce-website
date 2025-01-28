@@ -1,0 +1,159 @@
+<section id="foryou-section">
+  <div id="titlebar">
+    <h2 #forYouBooks>Featured For You</h2>
+    <div id="buttons">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyRight('.allForYouBook')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-left"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+          />
+        </svg>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyLeft('.allForYouBook')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-right"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="foryou" class="allForYouBook">
+    @if(forUBooks){ @for(book of forUBooks; track book){ @defer(on
+    viewport(forYouBooks)) {
+    <app-book-card [book]="book"></app-book-card>
+    }@placeholder (minimum 3000ms){
+    <app-book-placeholder></app-book-placeholder>
+    } }}
+  </div>
+</section>
+<section id="foryou-section">
+  <div id="titlebar">
+    <h2 #allTopBook>Top Books</h2>
+    <div id="buttons">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyRight('.allTopBook')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-left"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+          />
+        </svg>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyLeft('.allTopBook')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-right"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="foryou" class="allTopBook">
+    @if(topBooks){ @for(book of topBooks; track book){ @defer(on
+    viewport(allTopBook)){
+    <app-book-card [book]="book"></app-book-card>
+    }@placeholder(minimum 3000ms){
+    <app-book-placeholder></app-book-placeholder>
+    } }}
+  </div>
+</section>
+<section id="foryou-section">
+  <div id="titlebar">
+    <h2 #allPopularBook>Popular Books</h2>
+    <div id="buttons">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyRight('.popBooks')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-left"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+          />
+        </svg>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="scrollHorizontallyLeft('.popBooks')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="blue"
+          class="bi bi-chevron-right"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="foryou" class="popBooks">
+    @if(popularBooks){ @for(book of popularBooks; track book){ @defer(on
+    viewport(allPopularBook)){
+    <app-book-card [book]="book"></app-book-card>
+    }@placeholder(minimum 3000ms) {
+    <app-book-placeholder></app-book-placeholder>
+    } }}
+  </div>
+</section>

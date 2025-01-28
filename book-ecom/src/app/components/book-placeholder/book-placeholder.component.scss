@@ -1,0 +1,93 @@
+.card {
+  border-radius: 20px;
+  width: 161px;
+}
+
+* {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.card-body {
+  height: 110px;
+  overflow: hidden;
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: bold;
+  height: 42px;
+  overflow: hidden;
+}
+
+p {
+  font-weight: bold;
+}
+
+.basket {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245, 244, 244);
+  border-color: rgb(241, 240, 240);
+  margin-bottom: 20px;
+  margin-top: 0px;
+  svg {
+    fill: rgb(0, 0, 252);
+  }
+}
+.basket:hover {
+  background-color: rgb(0, 0, 252);
+  svg {
+    fill: white;
+  }
+}
+
+img {
+  width: 160px;
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245, 244, 244);
+  border-color: rgb(241, 240, 240);
+}
+button:hover {
+  svg {
+    fill: white;
+  }
+}
+
+#titlebar {
+  margin: 10px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 36px;
+  font-weight: bold;
+}
+#buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+h2{
+    font-size: 28px;
+    font-weight: bold;
+}

@@ -1,0 +1,18 @@
+<app-carousel></app-carousel>
+<h1>{{ categoryTitle }}</h1>
+<section #categoryData id="grid-section">
+  @if(categoriesList){ @for(book of categoriesList; track book){ @defer(on
+  viewport(categoryData)) {
+  <app-book-card [book]="book"></app-book-card>
+  }@placeholder (minimum 3000ms){
+  <app-book-placeholder></app-book-placeholder>
+  } }}
+</section>
+<div class="pagination-container">
+  <div class="pagination">
+    <a class="prev" (click)="previousPage()">Prev</a>
+    <div class="pageNumber">{{ currentPage }}</div>
+    <a class="next" (click)="nextPage()">Next</a>
+  </div>
+</div>
+<app-footer></app-footer>

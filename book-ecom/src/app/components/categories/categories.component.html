@@ -1,9 +1,7 @@
 <section>
   <ol>
-    @if(categories_list){
-        @for(category of categories_list; track category){
-          <li>{{category}}</li>  
-        }
-    }
+    @if(categoriesList){ @for(category of categoriesList; track category){
+    <li (click)="moveToBookPage(category)">{{ category }}</li>
+    } }
   </ol>
 </section>

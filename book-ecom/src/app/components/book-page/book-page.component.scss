@@ -1,0 +1,113 @@
+h1 {
+  margin: 50px 0px 50px 0px;
+  display: block;
+  background-color: rgb(0, 132, 255);
+  padding: 10px 100px;
+  color: white;
+  font-weight: bold;
+}
+
+* {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#grid-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1.5fr);
+  justify-content: center;
+  align-content: center;
+  gap: 40px;
+  margin-bottom: 100px;
+  align-items: center;
+  padding: 0px 20%;
+}
+
+@media (max-width: 1200px) {
+  #grid-section {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  #grid-section {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #grid-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  #grid-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  #grid-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pagination-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+
+.pagination {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 10px;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+
+.pagination a:hover {
+  background-color: #0056b3;
+}
+
+.pagination .active a {
+  background-color: #0056b3;
+  cursor: default;
+}
+
+.pagination .disabled a {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination .prev,
+.pagination .next {
+  font-weight: bold;
+}
+
+.pageNumber{
+  width: 35px;
+  height: 35px;
+  background-color: rgb(165, 165, 165);
+  color: white;
+  font-size: 20px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: rgb(0, 140, 255);
+}

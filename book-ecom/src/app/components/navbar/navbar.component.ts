@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { CategoriesComponent } from '../categories/categories.component';
+import { Router, RouterLink } from '@angular/router';
+import { CategoriesComponent } from "../categories/categories.component";
 
 @Component({
   selector: 'app-navbar',
@@ -9,16 +9,15 @@ import { CategoriesComponent } from '../categories/categories.component';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  booksdata: any = [];
+  booksData: any = [];
 
   constructor() {
-    this.booksdata = this.getCartData();
-    console.log(this.booksdata);
+    this.booksData = this.getCartData();
   }
 
   ngOnInit() {
-    this.booksdata = this.getCartData();
-    console.log(this.booksdata);
+    this.booksData = this.getCartData();
+    console.log(this.booksData);
   }
 
   getCartData() {
