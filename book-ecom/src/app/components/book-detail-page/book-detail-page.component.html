@@ -3,17 +3,7 @@
     <div class="col-1 w-100">
       <aside class="col-lg-6">
         <div class="rounded-4 mb-3 d-flex justify-content-start">
-          <img
-            style="
-              width: 200px;
-              height: 250px;
-              margin-bottom: 50px;
-              border-radius: 40px;
-              margin-left: 20px;
-            "
-            class="object-fit-cover"
-            [src]="bookData['img']"
-          />
+          <img class="object-fit-cover" [src]="bookData['img']" />
         </div>
       </aside>
       <main class="col-lg-6 w-100">
@@ -43,7 +33,7 @@
           </p>
 
           <div class="row">
-            <dt class="col-3">Category :</dt>
+            <dt class="col-3">Category</dt>
             <dd class="col-9">
               {{
                 bookData["category"][0].toUpperCase() +
@@ -112,7 +102,7 @@
             <a href="#" class="btn btn-warning shadow-0 m-2 mt-0"> Buy now </a>
             <a
               href="#"
-              class="btn btn-primary shadow-0 mt-0 m-2 d-flex flex-row justify-content-center align-items-center gap-2 w-25"
+              class="btn btn-primary shadow-0 mt-0 m-2 d-flex flex-row justify-content-center align-items-center gap-2 w-auto"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -123,9 +113,7 @@
               >
                 <path
                   d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
-                /></svg
-              >Add to cart
-            </a>
+                /></svg>Add to cart</a>
           </div>
         </div>
       </main>
