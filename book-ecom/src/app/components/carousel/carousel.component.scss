@@ -1,31 +1,12 @@
-.carousel-content1 {
-  width: 60vw;
-  height: 50vh;
-  background-color: rgb(255, 178, 223);
-  margin: 0px;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  h1 {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    color: purple;
-    font-weight: 600;
-  }
-  p {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    color: rgb(0, 0, 0);
-    font-size: 22px;
-  }
-}
+.carousel-content1,
 .carousel-content2 {
   width: 60vw;
+  max-width: 700px;
   height: 50vh;
-  background-color: rgb(253, 211, 120);
-  margin: 0px;
+  max-height: 500px;
+  background-color: rgb(255, 178, 223);
+  margin: auto;
+  margin-top: 50px;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   display: flex;
@@ -33,37 +14,124 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  h1 {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    color: rgb(0, 0, 252);
-    font-weight: 600;
-  }
-  p {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    color: rgb(0, 0, 0);
-    font-size: 22px;
-  }
+  padding: 20px;
 }
+
+.carousel-content2 {
+  background-color: rgb(253, 211, 120);
+}
+
+.carousel-content1 h1,
+.carousel-content2 h1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: purple;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.carousel-content2 h1 {
+  color: rgb(0, 0, 252);
+}
+
+.carousel-content1 p,
+.carousel-content2 p {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+}
+
 .grid-content {
   display: grid;
-  grid-template-rows: auto;
   grid-template-columns: auto auto;
   justify-content: center;
   align-items: center;
   gap: 0px;
 }
+
 .carousel-image {
   width: 20vw;
+  max-width: 250px;
   height: 50vh;
-  object-fit: contain;
+  max-height: 400px;
+  object-fit: cover;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
+  margin-top: 50px;
 }
+
 .carousel-pos {
   margin: 5% auto;
 }
-.carousel{
-  height: 100%;
+
+.carousel {
   width: 100%;
-  margin-top: 150px;
+  margin-top: 100px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .carousel-content1,
+  .carousel-content2 {
+    height: 45vh;
+    margin-top: 20px;
+  }
+
+  .carousel-image {
+    height: 45vh;
+    margin-top: 20px;
+  }
+
+  .carousel-content1 h1,
+  .carousel-content2 h1 {
+    font-size: 1.8rem;
+  }
+
+  .carousel-content1 p,
+  .carousel-content2 p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+  }
+
+  .carousel-content1,
+  .carousel-content2 {
+    width: 250px;
+    height: auto;
+    max-width: 95%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px 20px 0px 0px;
+    margin-top: 50px;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-top: 0px;
+    border-radius: 0px 0px 20px 20px;
+  }
+
+  .carousel-content1 h1,
+  .carousel-content2 h1 {
+    font-size: 1.7rem;
+  }
+
+  .carousel-content1 p,
+  .carousel-content2 p {
+    font-size: 1rem;
+  }
+
+  .carousel {
+    margin-top: 50px;
+  }
 }

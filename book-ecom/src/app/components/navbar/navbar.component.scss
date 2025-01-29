@@ -21,6 +21,12 @@ nav {
     width: 20px;
   }
 }
+.links{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 .navbar-toggler:hover {
   background-color: white;
   color: white;
@@ -103,6 +109,7 @@ img {
   .navbar-nav {
     display: flex;
     flex-direction: column;
+    margin: 0px;
   }
   input {
     border-radius: 50px;
@@ -124,5 +131,12 @@ img {
       width: 14px;
       height: 14px;
     }
+  }
+  .links{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
   }
 }
