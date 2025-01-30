@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
-import { AbourCardComponent } from '../abour-card/abour-card.component';
+import { AboutCardComponent } from "../about-card/about-card.component";
 
 @Component({
   selector: 'app-about-us-page',
-  imports: [FooterComponent, AbourCardComponent],
+  imports: [FooterComponent,AboutCardComponent],
   templateUrl: './about-us-page.component.html',
   styleUrl: './about-us-page.component.scss',
 })
