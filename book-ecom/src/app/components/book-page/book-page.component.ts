@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { ActivatedRoute } from '@angular/router';
-import { BookCardComponent } from "../book-card/book-card.component";
-import { BookPlaceholderComponent } from "../book-placeholder/book-placeholder.component";
+import { BookCardComponent } from '../book-card/book-card.component';
+import { BookPlaceholderComponent } from '../book-placeholder/book-placeholder.component';
+import { Books } from '../../interfaces/books/books';
+import { BooksService } from '../../services/books/books.service';
 
 @Component({
   selector: 'app-book-page',
@@ -11,50 +13,29 @@ import { BookPlaceholderComponent } from "../book-placeholder/book-placeholder.c
     CarouselComponent,
     BookCardComponent,
     FooterComponent,
-    BookPlaceholderComponent
-],
+    BookPlaceholderComponent,
+  ],
   templateUrl: './book-page.component.html',
   styleUrl: './book-page.component.scss',
 })
 export class BookPageComponent {
   categoryTitle: string = '';
-  dataUrl: any = 'json/books.json';
-  data: any[] = [];
-  allItems: any[] = [];
+  allItems: Books[] = [];
   categoriesList: any[] = [];
   category: string = '';
   currentPage: number = 1;
   itemsPerPage: number = 20;
   totalPages: number = 0;
 
-  constructor(private route: ActivatedRoute) {}
+  private data = inject(BooksService);
+  private route = inject(ActivatedRoute);
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.categoryTitle = params.get('categoryTitle')!;
-      console.log('Category title from route:', this.categoryTitle);
-
-      fetch(this.dataUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          this.data = data;
-          this.allItems = [];
-          for (let i = 0; i < this.data.length; i++) {
-            this.category =
-              this.data[i]['category'][0].toUpperCase() +
-              this.data[i]['category'].slice(1).toLowerCase();
-            if (
-              this.category.toLowerCase() === this.categoryTitle.toLowerCase()
-            ) {
-              this.allItems.push(this.data[i]);
-            }
-          }
-          this.totalPages = Math.ceil(this.allItems.length / this.itemsPerPage);
-          this.paginate();
-        })
-        .catch((error) => {
-          console.error('There was a problem with the fetch operation:', error);
-        });
+      this.allItems = this.data.getBooksByCategory(this.categoryTitle);
+      this.totalPages = Math.ceil(this.allItems.length / this.itemsPerPage);
+      this.paginate();
     });
   }
 

@@ -1,123 +1,76 @@
-<section class="book-detail">
-  <div class="container">
-    <div class="col-1 w-100">
-      <aside class="col-lg-6">
-        <div class="rounded-4 mb-3 d-flex justify-content-start">
-          <img class="object-fit-cover" [src]="bookData['img']" />
+<section class="book-detail container py-5">
+  <div class="row justify-content-center align-items-start">
+    <aside class="col-lg-5 text-center">
+      <div class="image-container p-3 shadow-sm rounded-4">
+        <img class="book-image" [src]="bookData[0]['img']" alt="Book Cover" />
+      </div>
+    </aside>
+    <main class="col-lg-7">
+      <div class="content-box p-4 rounded-4 shadow-sm">
+        <h2 class="title text-dark fw-bold">{{ bookData[0]["title"] }}</h2>
+
+        <div class="d-flex align-items-center my-3">
+          <div class="text-warning d-flex gap-2">
+            <div #starsContainer class="stars-container"></div>
+            <span class="rating-text">({{ bookData[0]["stars"] }})</span>
+          </div>
+          <span class="availability ms-3 text-muted">
+            <i class="fas fa-shopping-basket mx-1"></i>
+            {{ bookData[0]["availability"] }}
+          </span>
+          <span class="text-success ms-2 fw-bold">In stock</span>
         </div>
-      </aside>
-      <main class="col-lg-6 w-100">
-        <div class="ps-lg-3">
-          <h4 class="title text-dark">
-            {{ bookData["title"] }}
-          </h4>
-          <div class="d-flex flex-row my-3">
-            <div class="text-warning mb-1 me-2 d-flex flex-row gap-2">
-              <div #starsContainer class="stars-container"></div>
-              <span class="ms-1"> {{ bookData["stars"] }} </span>
-            </div>
-            <span class="text-muted"
-              ><i class="fas fa-shopping-basket fa-sm mx-1"></i
-              >{{ bookData["availability"] }}</span
+
+        <p class="price text-primary fs-4 fw-bold">
+          ${{ bookData[0]["price"] }}
+          <span class="text-muted fs-6">/per book</span>
+        </p>
+        <p class="text-muted">{{ bookData[0]["description"] }}</p>
+
+        <div class="row">
+          <dt class="col-4 fw-bold">Category:</dt>
+          <dd class="col-8">
+            {{
+              bookData[0]["category"][0].toUpperCase() +
+                bookData[0]["category"].slice(1).toLowerCase()
+            }}
+          </dd>
+        </div>
+
+        <div class="quantity-box d-flex align-items-center my-4">
+          <label class="fw-bold me-3">Quantity:</label>
+          <div class="input-group quantity-control">
+            <button
+              class="btn btn-outline-secondary"
+              (click)="decrementBooks()"
             >
-            <span class="text-success ms-2">In stock</span>
-          </div>
-
-          <div class="mb-3">
-            <span class="h5">${{ bookData["price"] }}</span>
-            <span class="text-muted">/per book</span>
-          </div>
-
-          <p>
-            {{ bookData["description"] }}
-          </p>
-
-          <div class="row">
-            <dt class="col-3">Category</dt>
-            <dd class="col-9">
-              {{
-                bookData["category"][0].toUpperCase() +
-                  bookData["category"].slice(1).toLowerCase()
-              }}
-            </dd>
-          </div>
-
-          <hr />
-
-          <div class="row mb-4">
-            <div class="col-md-4 col-6 mb-3">
-              <label class="mb-2 d-block">Quantity :</label>
-              <div class="input-group mb-3" style="width: 170px">
-                <button
-                  class="btn btn-white border border-secondary px-3"
-                  type="button"
-                  id="button-addon1"
-                  data-mdb-ripple-color="dark"
-                  (click)="decrementBooks()"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-dash"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"
-                    />
-                  </svg>
-                </button>
-                <input
-                  type="text"
-                  class="form-control text-center border border-secondary"
-                  [placeholder]="numberOfBooks"
-                  aria-label="Example text with button addon"
-                  aria-describedby="button-addon1"
-                />
-                <button
-                  class="btn btn-white border border-secondary px-3"
-                  type="button"
-                  id="button-addon2"
-                  data-mdb-ripple-color="dark"
-                  (click)="incrementBooks()"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-plus"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex flex-row align-items-center">
-            <a href="#" class="btn btn-warning shadow-0 m-2 mt-0"> Buy now </a>
-            <a
-              href="#"
-              class="btn btn-primary shadow-0 mt-0 m-2 d-flex flex-row justify-content-center align-items-center gap-2 w-auto"
+              -
+            </button>
+            <input
+              type="text"
+              class="form-control text-center"
+              [value]="numberOfBooks"
+              readonly
+            />
+            <button
+              class="btn btn-outline-secondary"
+              (click)="incrementBooks()"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                class="bi bi-cart cart-image"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
-                /></svg>Add to cart</a>
+              +
+            </button>
           </div>
         </div>
-      </main>
-    </div>
+
+        <div class="d-flex gap-3">
+          <button class="btn btn-warning px-4 py-2 fw-bold">Buy Now</button>
+          <button
+            class="btn btn-primary d-flex align-items-center px-4 py-2 gap-2 fw-bold"
+          >
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </main>
   </div>
 </section>
 <app-footer></app-footer>

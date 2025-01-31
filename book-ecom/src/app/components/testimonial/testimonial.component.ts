@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TestimonialCardComponent } from '../testimonial-card/testimonial-card.component';
+import { TestimonialService } from '../../services/testimonial/testimonial.service';
+import { Testimonial } from '../../interfaces/testimonial/testimonial';
 
 @Component({
   selector: 'app-testimonial',
@@ -8,14 +10,9 @@ import { TestimonialCardComponent } from '../testimonial-card/testimonial-card.c
   styleUrl: './testimonial.component.scss',
 })
 export class TestimonialComponent {
-  dataUrl = "json/testimonial.json";
-  testimonialData: any = [];
-  ngOnInit() {
-    fetch(this.dataUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        this.testimonialData = data;
-        console.log(this.testimonialData);
-      });
+  testimonialData!: Testimonial[];
+  private data = inject(TestimonialService);
+  async ngOnInit() {
+    this.testimonialData = await this.data.getTestimonialData();
   }
 }

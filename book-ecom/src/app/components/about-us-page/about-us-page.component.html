@@ -15,9 +15,9 @@
 
   <div class="container">
     <div class="row gy-3 gy-md-4 gy-lg-0">
-      @if(aboutData){ @for(about of aboutData; track about){
+      @if(aboutData){ @for(data of aboutData; track data){
       <div class="col-12 col-lg-6 mb-4">
-        <app-about-card [aboutContent]="about"></app-about-card>
+        <app-about-card [aboutContent]="data"></app-about-card>
       </div>
       } }
     </div>

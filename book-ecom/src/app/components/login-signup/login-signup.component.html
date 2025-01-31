@@ -1,0 +1,73 @@
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-outline mb-3">
+            <input type="email" class="form-control" placeholder=" " required />
+            <label>Email or Username</label>
+          </div>
+          <div class="form-outline mb-3">
+            <input type="password" class="form-control" placeholder=" " required />
+            <label>Password</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Sign in</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center w-100">
+          Don't have an account?
+          <a href="#" class="text-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signupModal">
+            Sign up
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Signup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-outline mb-3">
+            <input type="text" class="form-control" placeholder=" " required />
+            <label>Name</label>
+          </div>
+          <div class="form-outline mb-3">
+            <input type="text" class="form-control" placeholder=" " required />
+            <label>Username</label>
+          </div>
+          <div class="form-outline mb-3">
+            <input type="email" class="form-control" placeholder=" " required />
+            <label>Email</label>
+          </div>
+          <div class="form-outline mb-3">
+            <input type="password" class="form-control" placeholder=" " required />
+            <label>Password</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center w-100">
+          Already have an account?
+          <a href="#" class="text-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Sign in
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import { CarouselComponent } from "../carousel/carousel.component";
 import { FooterComponent } from "../footer/footer.component";
 import { HomePageBooksComponent } from "../home-page-books/home-page-books.component";
 import { TestimonialComponent } from "../testimonial/testimonial.component";
+import { LoginSignupComponent } from "../login-signup/login-signup.component";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ import { TestimonialComponent } from "../testimonial/testimonial.component";
     CarouselComponent,
     FooterComponent,
     HomePageBooksComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    LoginSignupComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
