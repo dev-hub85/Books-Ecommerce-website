@@ -1,0 +1,26 @@
+h2 {
+  color: rgb(0, 102, 255);
+  font-weight: 700;
+}
+.card-body {
+  padding: 20px 30px;
+}
+.card {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  margin: 0px;
+  margin-bottom: 5px;
+}
+hr {
+  color: rgb(138, 137, 137);
+}
+@media (max-width: 992px) {
+  .card-body {
+    width: 95%;
+    h2 {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+}

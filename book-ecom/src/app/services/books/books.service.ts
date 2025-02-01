@@ -18,11 +18,18 @@ export class BooksService {
     return this.categories$.asObservable();
   }
 
+  getDataFromStorage() {
+    const booksData = localStorage.getItem('books');
+    this.allData = booksData ? JSON.parse(booksData) : [];
+  }
+
   getLengthOfBooks(): number {
+    this.getDataFromStorage();
     return this.allData.length;
   }
 
   getBooksByCategory(category: string): Books[] {
+    this.getDataFromStorage();
     return this.allData.filter(
       (book) => book.category.toLowerCase() === category.toLowerCase()
     );
@@ -31,11 +38,12 @@ export class BooksService {
   async getForYouBooks(): Promise<Books[]> {
     const response = await fetch(this.path);
     this.allData = await response.json();
-    this.getCategoriesList();
+    localStorage.setItem('books', JSON.stringify(this.allData));
     return this.getRandomBooks(this.allData, 20);
   }
 
   getTopBooks(): Books[] {
+    this.getDataFromStorage();
     this.allTopBooks = [];
     for (let i = 0; i < this.allData.length; i++) {
       if (this.allData[i].stars >= 4) {
@@ -46,6 +54,7 @@ export class BooksService {
   }
 
   getPopularBooks(): Books[] {
+    this.getDataFromStorage();
     this.allPopularBooks = [];
     for (let i = 0; i < this.allData.length; i++) {
       if (this.allData[i].availability <= 50) {
@@ -55,12 +64,14 @@ export class BooksService {
     return this.getRandomBooks(this.allPopularBooks, 20);
   }
   getBookByName(name: string): Books[] {
+    this.getDataFromStorage();
     return this.allData.filter(
       (book) => book.title.toLowerCase() === name.toLowerCase()
     );
   }
 
   getCategoriesList() {
+    this.getDataFromStorage();
     this.categoriesList = [];
     for (let i = 0; i < this.allData.length; i++) {
       let category =

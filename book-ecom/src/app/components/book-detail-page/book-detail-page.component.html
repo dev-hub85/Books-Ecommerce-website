@@ -25,7 +25,7 @@
           ${{ bookData[0]["price"] }}
           <span class="text-muted fs-6">/per book</span>
         </p>
-        <p class="text-muted">{{ bookData[0]["description"] }}</p>
+        <p class="text-muted description">{{ bookData[0]["description"] }}</p>
 
         <div class="row">
           <dt class="col-4 fw-bold">Category:</dt>
@@ -49,6 +49,7 @@
             <input
               type="text"
               class="form-control text-center"
+              style="border: 0.025ch solid rgb(114, 113, 113)"
               [value]="numberOfBooks"
               readonly
             />
@@ -66,7 +67,7 @@
           <button
             class="btn btn-primary d-flex align-items-center px-4 py-2 gap-2 fw-bold"
           >
-            <i class="fas fa-shopping-cart"></i> Add to Cart
+            <i class="bi bi-cart-fill cart-image"></i>Add to Cart
           </button>
         </div>
       </div>

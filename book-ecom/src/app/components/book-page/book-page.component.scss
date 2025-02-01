@@ -33,6 +33,17 @@ h1 {
   #grid-section {
     grid-template-columns: repeat(4, 1fr);
   }
+  h1 {
+    font-size: 20px;
+    padding: 10px 30px;
+  }
+  #grid-section {
+    padding: 0px 10%;
+  }
+  a{
+    font-size: 14px;
+    padding: 5px 10px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -58,7 +69,6 @@ h1 {
   margin: 20px 0;
 }
 
-
 .pagination {
   list-style-type: none;
   display: flex;
@@ -79,7 +89,6 @@ h1 {
   cursor: pointer;
 }
 
-
 .pagination a:hover {
   background-color: #0056b3;
 }
@@ -99,7 +108,7 @@ h1 {
   font-weight: bold;
 }
 
-.pageNumber{
+.pageNumber {
   width: 35px;
   height: 35px;
   background-color: rgb(165, 165, 165);

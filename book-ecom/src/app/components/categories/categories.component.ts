@@ -1,4 +1,10 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../../services/books/books.service';
 import { Subscription } from 'rxjs';
@@ -21,6 +27,17 @@ export class CategoriesComponent {
       .subscribe((categories) => {
         this.categoriesList = categories;
       });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.categoriesSubscription = this.data
+      .getCategories()
+      .subscribe((categories) => {
+        this.categoriesList = categories;
+      });
+  }
+  ngOnDestroy() {
+    this.categoriesSubscription.unsubscribe();
   }
 
   moveToBookPage(categoryTitle: string) {

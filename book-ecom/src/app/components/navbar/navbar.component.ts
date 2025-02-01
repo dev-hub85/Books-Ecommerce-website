@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CategoriesComponent } from '../categories/categories.component';
+import { BooksService } from '../../services/books/books.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,14 +11,17 @@ import { CategoriesComponent } from '../categories/categories.component';
 })
 export class NavbarComponent {
   booksData: any = [];
-  navbarToggler : any;
-  navbarCollapse : any;
+  navbarToggler: any;
+  navbarCollapse: any;
+
+  private data = inject(BooksService);
 
   constructor() {
     this.booksData = this.getCartData();
   }
 
   ngOnInit() {
+    this.data.getCategoriesList();
     this.booksData = this.getCartData();
     console.log(this.booksData);
     this.navbarToggler = document.querySelector(

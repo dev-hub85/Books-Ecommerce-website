@@ -88,7 +88,7 @@ a:hover {
 }
 
 a:active {
-  color: rgb(92, 90, 90);
+  color: rgb(7, 3, 255);
 }
 
 img {
@@ -184,6 +184,7 @@ img {
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
+    gap: 7px;
   }
   input {
     margin-left: 0px;
