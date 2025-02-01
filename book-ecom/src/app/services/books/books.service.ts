@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Books } from '../../interfaces/books/books';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,13 @@ export class BooksService {
   allData: Books[] = [];
   allTopBooks: Books[] = [];
   allPopularBooks: Books[] = [];
+  categoriesList: string[] = [];
+
+  private categories$ = new BehaviorSubject<string[]>([]);
+
+  getCategories() {
+    return this.categories$.asObservable();
+  }
 
   getLengthOfBooks(): number {
     return this.allData.length;
@@ -23,6 +31,7 @@ export class BooksService {
   async getForYouBooks(): Promise<Books[]> {
     const response = await fetch(this.path);
     this.allData = await response.json();
+    this.getCategoriesList();
     return this.getRandomBooks(this.allData, 20);
   }
 
@@ -51,6 +60,18 @@ export class BooksService {
     );
   }
 
+  getCategoriesList() {
+    this.categoriesList = [];
+    for (let i = 0; i < this.allData.length; i++) {
+      let category =
+        this.allData[i]['category'][0].toUpperCase() +
+        this.allData[i]['category'].slice(1).toLowerCase();
+      if (!this.categoriesList.includes(category)) {
+        this.categoriesList.push(category);
+      }
+    }
+    this.categories$.next(this.categoriesList);
+  }
   getRandomBooks(arr: Books[], num: number): Books[] {
     const result: Books[] = [];
     const seenIndexes = new Set();

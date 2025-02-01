@@ -63,14 +63,14 @@ p {
   border-color: rgb(241, 240, 240);
   margin-bottom: 20px;
   margin-top: 0px;
-  svg {
-    fill: rgb(0, 0, 252);
+  i {
+    color: rgb(0, 0, 252) !important;
   }
 }
 .basket:hover {
   background-color: rgb(0, 0, 252);
-  svg {
-    fill: white;
+  i {
+    color: white !important;
   }
 }
 
@@ -92,11 +92,6 @@ button {
   background-color: rgb(245, 244, 244);
   border-color: rgb(241, 240, 240);
 }
-button:hover {
-  svg {
-    fill: white;
-  }
-}
 
 #titlebar {
   margin: 10px 40px;
@@ -116,7 +111,35 @@ button:hover {
   gap: 10px;
 }
 
-h2{
-    font-size: 28px;
-    font-weight: bold;
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 992px) {
+  .card {
+    border-radius: 10px;
+    width: 140px;
+  }
+  .card-body {
+    height: 100px;
+  }
+  h5 {
+    font-size: 12px;
+    margin-bottom: 0px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  img {
+    width: 139px;
+    height: 130px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .basket {
+  width: 30px;
+  height: 30px;
+}
 }

@@ -10,6 +10,8 @@ ol {
   margin-bottom: 0px;
   background-color: rgb(250, 250, 250);
   width: 100%;
+  left: 0;
+  right: 0;
 }
 
 ol::-webkit-scrollbar {
@@ -56,4 +58,12 @@ li:active {
 }
 *{
    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+@media (max-width:992px){
+  li{
+    height: 30px;
+    width: 120px;
+    font-size: 14px;
+  }
 }

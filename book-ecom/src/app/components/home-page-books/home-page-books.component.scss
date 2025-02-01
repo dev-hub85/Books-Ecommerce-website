@@ -1,5 +1,3 @@
-
-
 * {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
@@ -89,9 +87,13 @@ button {
   background-color: rgb(245, 244, 244);
   border-color: rgb(241, 240, 240);
 }
+
+button i {
+  color: rgb(0, 91, 196) !important;
+}
 button:hover {
-  svg {
-    fill: white;
+  i {
+    color: white !important;
   }
 }
 
@@ -113,7 +115,43 @@ button:hover {
   gap: 10px;
 }
 
-h2{
-    font-size: 28px;
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+@media (max-width: 992px) {
+  h2 {
+    font-size: 20px;
+  }
+  #foryou {
+    gap: 20px;
+    margin: 10px 20px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  #titlebar {
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 36px;
     font-weight: bold;
+  }
+  button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(245, 244, 244);
+    border-color: rgb(241, 240, 240);
+  }
+  button {
+    i {
+      font-size: 14px;
+    }
+  }
 }

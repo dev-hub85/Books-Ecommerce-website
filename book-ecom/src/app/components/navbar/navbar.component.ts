@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { CategoriesComponent } from '../categories/categories.component';
-import { LoginSignupComponent } from '../login-signup/login-signup.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, CategoriesComponent, LoginSignupComponent],
+  imports: [CategoriesComponent, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
   booksData: any = [];
-  modal: boolean = false;
+  navbarToggler : any;
+  navbarCollapse : any;
 
   constructor() {
     this.booksData = this.getCartData();
@@ -20,6 +20,22 @@ export class NavbarComponent {
   ngOnInit() {
     this.booksData = this.getCartData();
     console.log(this.booksData);
+    this.navbarToggler = document.querySelector(
+      '.navbar-toggler'
+    ) as HTMLElement;
+    this.navbarCollapse = document.querySelector(
+      '#navbarTogglerDemo01'
+    ) as HTMLElement;
+  }
+
+  toggleNavBar() {
+    this.navbarToggler?.addEventListener('click', () => {
+      if (this.navbarCollapse.classList.contains('show')) {
+        this.navbarCollapse.classList.remove('show');
+      } else {
+        this.navbarCollapse.classList.add('show');
+      }
+    });
   }
 
   getCartData() {
@@ -32,9 +48,4 @@ export class NavbarComponent {
 
   items: number = 5;
   imageUrl: string = 'images/logo.png';
-
-  activatemodal() {
-    this.modal = true;
-    console.log(this.modal);
-  }
 }

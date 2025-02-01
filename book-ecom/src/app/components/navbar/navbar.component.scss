@@ -1,18 +1,38 @@
-
-nav {
+.nav-bar {
   position: sticky;
   top: 0;
   right: 0;
   left: 0;
   z-index: 100;
   background-color: white;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0px 20px;
 }
-.nav-bar {
-  left: 0;
-  right: 0;
+
+#navbar-toggler {
+  cursor: pointer;
 }
+.nav-content {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-item:hover {
+  color: gray;
+}
+.nav-item:focus {
+  color: rgb(92, 90, 90);
+}
+a {
+  cursor: pointer;
+}
+
+button i.bi-search {
+  color: white !important;
+}
+
 .navbar-toggler {
   background-color: white;
   color: white;
@@ -21,7 +41,7 @@ nav {
     width: 20px;
   }
 }
-.links{
+.links {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -33,10 +53,17 @@ nav {
   border-color: transparent;
 }
 
+.nav-content2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 input {
   border-radius: 50px;
   width: 350px;
   height: 50px;
+  margin-left: 50px;
 }
 
 button {
@@ -48,10 +75,6 @@ button {
 
 button:hover {
   background-color: rgb(0, 0, 252);
-}
-
-svg {
-  color: white;
 }
 
 a {
@@ -92,8 +115,20 @@ img {
   color: white;
 }
 
+.cart-image {
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  color: grey !important;
+  cursor: pointer;
+}
+
 .cart-image:hover {
-  fill: gray;
+  color: rgb(68, 68, 68) !important;
+}
+
+.collapse{
+  display: flex;
 }
 
 @media only screen and (max-width: 992px) {
@@ -132,11 +167,57 @@ img {
       height: 14px;
     }
   }
-  .links{
+  .links {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0px;
+  }
+  a {
+    font-size: 14px;
+  }
+  .nav-content {
+    margin-left: 0px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+  input {
+    margin-left: 0px;
+  }
+  form {
+    margin-top: 10px;
+  }
+
+  .nav-content2 {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+  .collapse {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .collapse.show {
+    display: block;
+    max-height: 520px;
+    animation: slide-down 1s linear;
+  }
+
+  @keyframes slide-down {
+    0% {
+      max-height: 0;
+    }
+    100% {
+      max-height: 520px;
+    }
   }
 }

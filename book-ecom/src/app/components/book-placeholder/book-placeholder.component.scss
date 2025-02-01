@@ -87,7 +87,35 @@ button:hover {
   gap: 10px;
 }
 
-h2{
-    font-size: 28px;
-    font-weight: bold;
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+@media (max-width: 992px) {
+  .card {
+    border-radius: 10px;
+    width: 140px;
+  }
+  .card-body {
+    height: 100px;
+  }
+  h5 {
+    font-size: 12px;
+    margin-bottom: 0px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  img {
+    width: 139px;
+    height: 130px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .basket {
+    width: 30px;
+    height: 30px;
+  }
 }

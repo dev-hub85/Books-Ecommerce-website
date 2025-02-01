@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { BooksService } from '../../services/books/books.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categories',
@@ -7,30 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent {
-  dataUrl: string = 'json/books.json';
-  data: any = [];
   categoriesList: string[] = [];
+  private categoriesSubscription: Subscription = new Subscription();
 
-  constructor(private router: Router) {}
+  private data = inject(BooksService);
+  private router = inject(Router);
 
   ngOnInit() {
-    fetch(this.dataUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        this.data = data;
-        this.categoriesList = [];
-        for (let i = 0; i < this.data.length; i++) {
-          let category =
-            this.data[i]['category'][0].toUpperCase() +
-            this.data[i]['category'].slice(1).toLowerCase();
-          if (!this.categoriesList.includes(category)) {
-            this.categoriesList.push(category);
-          }
-        }
-      })
-      .catch((error) => {
-        console.error('There was a problem with the fetch operation:', error);
+    this.categoriesSubscription = this.data
+      .getCategories()
+      .subscribe((categories) => {
+        this.categoriesList = categories;
       });
   }
 
