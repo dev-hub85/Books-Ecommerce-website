@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { BooksService } from '../../services/books/books.service';
 import { Books } from '../../interfaces/books/books';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-book-detail-page',
@@ -20,6 +21,7 @@ export class BookDetailPageComponent {
 
   private route = inject(ActivatedRoute);
   private data = inject(BooksService);
+  private cartdata = inject(CartService);
 
   ngOnInit() {
     this.route.queryParams.subscribe((param) => {
@@ -31,7 +33,6 @@ export class BookDetailPageComponent {
       }
     });
   }
-
 
   calculateStars(stars: number) {
     this.fullStars = Math.floor(stars);
@@ -72,5 +73,9 @@ export class BookDetailPageComponent {
     } else if (this.numberOfBooks == 0) {
       this.numberOfBooks = 0;
     }
+  }
+
+  moveToCart(book: string) {
+    this.cartdata.addToCart(book);
   }
 }

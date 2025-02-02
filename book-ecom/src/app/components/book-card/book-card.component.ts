@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-book-card',
@@ -9,27 +10,15 @@ import { Router } from '@angular/router';
 })
 export class BookCardComponent {
   @Input() book: any = {};
-  cartData: any = [];
-
-  constructor(private router: Router) {}
-
-  addToCart(title: string) {
-    const existingBook = this.cartData.find(
-      (book: { title: string }) => book.title === title
-    );
-    if (existingBook) {
-      existingBook.quantity++;
-      localStorage.setItem('book', JSON.stringify(this.cartData));
-    } else {
-      this.cartData.push({ title: title, quantity: 1 });
-      localStorage.setItem('book', JSON.stringify(this.cartData));
-    }
-    console.log(this.cartData);
-  }
+  private router = inject(Router);
+  private data = inject(CartService);
 
   moveToBookDetail(bookCategory: string, bookTitle: string) {
     this.router.navigate(['/bookDetails', bookCategory], {
       queryParams: { bookTitle },
     });
+  }
+  moveToCart(book: string) {
+    this.data.addToCart(book);
   }
 }

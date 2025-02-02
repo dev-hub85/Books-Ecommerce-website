@@ -12,7 +12,7 @@
         class="d-flex flex-row justify-content-between align-items-center m-0"
       >
         <p class="card-text">${{ book["price"] }}</p>
-        <div class="basket">
+        <div class="basket" (click)="moveToCart(book['title'])">
           <i class="bi bi-basket-fill"></i>
         </div>
       </div>
