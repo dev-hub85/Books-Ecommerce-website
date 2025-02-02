@@ -4,6 +4,7 @@ import { BookPageComponent } from './components/book-page/book-page.component';
 import { BookDetailPageComponent } from './components/book-detail-page/book-detail-page.component';
 import { AboutUsPageComponent } from './components/about-us-page/about-us-page.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
+import { CartComponent } from './components/cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -19,11 +20,15 @@ export const routes: Routes = [
     component: BookDetailPageComponent,
   },
   {
-    path : 'about',
-    component : AboutUsPageComponent,
+    path: 'about',
+    component: AboutUsPageComponent,
   },
-    {
-    path : 'contact',
-    component : ContactPageComponent,
-  }
+  {
+    path: 'contact',
+    component: ContactPageComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+  },
 ];

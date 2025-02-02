@@ -18,7 +18,7 @@ export class BookCardComponent {
       queryParams: { bookTitle },
     });
   }
-  moveToCart(book: string) {
-    this.data.addToCart(book);
+  moveToCart(book: string, quantity: number) {
+    this.data.addToCart(book, quantity);
   }
 }

@@ -65,8 +65,10 @@ export class BooksService {
   }
   getBookByName(name: string): Books[] {
     this.getDataFromStorage();
-    return this.allData.filter(
-      (book) => book.title.toLowerCase() === name.toLowerCase()
+    return (
+      this.allData.filter(
+        (book) => book.title.toLowerCase() === name.toLowerCase()
+      ) || []
     );
   }
 

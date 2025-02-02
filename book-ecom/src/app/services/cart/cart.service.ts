@@ -17,20 +17,19 @@ export class CartService {
     }
   }
 
-  addToCart(title: string) {
+  addToCart(title: string, quantity: number) {
     const existingBook = this.cartData().find(
       (book: { name: string }) => book.name === title
     );
     if (existingBook) {
-      existingBook.quantity++;
+      existingBook.quantity += quantity;
     } else {
       this.cartData.update((cart) => [...cart, { name: title, quantity: 1 }]);
     }
     const updatedCart = this.cartData();
-    this.cartSubject.next(updatedCart); // Emit the updated cart
+    this.cartSubject.next(updatedCart);
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
-    console.log(updatedCart);
   }
 
   getTotalQuantity(): number {

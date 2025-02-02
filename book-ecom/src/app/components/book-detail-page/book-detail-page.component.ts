@@ -75,7 +75,7 @@ export class BookDetailPageComponent {
     }
   }
 
-  moveToCart(book: string) {
-    this.cartdata.addToCart(book);
+  moveToCart(book: string, quantity: number) {
+    this.cartdata.addToCart(book, quantity);
   }
 }

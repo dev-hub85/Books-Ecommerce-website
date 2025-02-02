@@ -32,11 +32,6 @@ export class NavbarComponent {
       '#navbarTogglerDemo01'
     ) as HTMLElement;
   }
-
-  ngOnChange() {
-    this.items = this.cartdata.getTotalQuantity();
-  }
-
   toggleNavBar() {
     this.navbarToggler?.addEventListener('click', () => {
       if (this.navbarCollapse.classList.contains('show')) {
