@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CategoriesComponent } from '../categories/categories.component';
 import { BooksService } from '../../services/books/books.service';
 import { CartService } from '../../services/cart/cart.service';
@@ -16,23 +16,23 @@ export class NavbarComponent {
   navbarToggler: any;
   navbarCollapse: any;
   cartSubscription: Subscription = new Subscription();
-
-  private data = inject(BooksService);
   private cartdata = inject(CartService);
+  private data = inject(BooksService);
+  private route = inject(ActivatedRoute);
 
   ngOnInit() {
     this.data.getCategoriesList();
     this.cartSubscription = this.cartdata.getCartChanges().subscribe((cart) => {
       this.items = this.cartdata.getTotalQuantity();
     });
+  }
+  toggleNavBar() {
     this.navbarToggler = document.querySelector(
       '.navbar-toggler'
     ) as HTMLElement;
     this.navbarCollapse = document.querySelector(
       '#navbarTogglerDemo01'
     ) as HTMLElement;
-  }
-  toggleNavBar() {
     this.navbarToggler?.addEventListener('click', () => {
       if (this.navbarCollapse.classList.contains('show')) {
         this.navbarCollapse.classList.remove('show');

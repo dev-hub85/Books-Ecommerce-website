@@ -5,10 +5,11 @@ import { Cart } from '../../interfaces/cart/cart';
 import { Subscription } from 'rxjs';
 import { Books } from '../../interfaces/books/books';
 import { BooksService } from '../../services/books/books.service';
+import { CartCardComponent } from '../cart-card/cart-card.component';
 
 @Component({
   selector: 'app-cart',
-  imports: [FooterComponent],
+  imports: [FooterComponent, CartCardComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
@@ -19,6 +20,7 @@ export class CartComponent {
   cartSubscription: Subscription = new Subscription();
   private dataOfBooks = inject(BooksService);
   ngOnInit() {
+    console.log(this.bookData);
     this.cartSubscription = this.data.getCartChanges().subscribe((cart) => {
       this.cartItems = cart;
       this.bookData = [];

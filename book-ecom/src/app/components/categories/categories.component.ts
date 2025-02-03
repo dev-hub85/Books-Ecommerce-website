@@ -27,6 +27,7 @@ export class CategoriesComponent {
       .subscribe((categories) => {
         this.categoriesList = categories;
       });
+    console.log(this.categoriesList);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -36,10 +37,6 @@ export class CategoriesComponent {
         this.categoriesList = categories;
       });
   }
-  ngOnDestroy() {
-    this.categoriesSubscription.unsubscribe();
-  }
-
   moveToBookPage(categoryTitle: string) {
     localStorage.setItem('category_title', categoryTitle);
     this.router.navigate(['books', categoryTitle]);

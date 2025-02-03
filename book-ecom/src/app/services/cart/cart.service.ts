@@ -8,8 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
   private cartData = signal<Cart[]>([]);
   private cartSubject = new BehaviorSubject<Cart[]>([]);
-
   constructor() {
+    this.getDataFromStorage();
+  }
+  getDataFromStorage() {
     const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
     if (storedCart.length > 0) {
       this.cartData.set(storedCart);
@@ -28,10 +30,39 @@ export class CartService {
     }
     const updatedCart = this.cartData();
     this.cartSubject.next(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    this.getDataFromStorage();
+  }
 
+  updateItemQuantity(title: string, quantity: number) {
+    const book = this.cartData().find(
+      (book: { name: string }) => book.name === title
+    );
+    if (book) {
+      book.quantity = quantity;
+      const updatedCart = this.cartData();
+      this.cartSubject.next(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
+  }
+
+  removeItem(title: string) {
+    const updatedCart = this.cartData().filter((book) => book.name !== title);
+    this.cartData.set(updatedCart);
+    this.cartSubject.next(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
 
+  getItemQuantity(title: string) {
+    const book = this.cartData().find(
+      (book: { name: string }) => book.name === title
+    );
+    console.log(book);
+    if (book) {
+      return book.quantity;
+    }
+    return 0;
+  }
   getTotalQuantity(): number {
     return this.cartData().reduce((total, book) => total + book.quantity, 0);
   }
