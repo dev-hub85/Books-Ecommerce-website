@@ -1,7 +1,19 @@
 <section>
-  <ol>
-    @if(categoriesList){ @for(category of categoriesList; track category){
-    <li (click)="moveToBookPage(category)">{{ category }}</li>
-    } }
+  <ol class="dropdown-list">
+    <li class="dropdown-item" (click)="toggleDropdown()">
+      <div id="main-content">
+        <div>Categories</div>
+        <div>
+          <i class="bi bi-caret-down-fill"></i>
+        </div>
+      </div>
+    </li>
+    <div class="dropdown-menu" [class.show]="isDropdownOpen">
+      @if(categoriesList) { @for(category of categoriesList; track category) {
+      <li class="dropdown-item" (click)="moveToBookPage(category)">
+        {{ category }}
+      </li>
+      } }
+    </div>
   </ol>
 </section>

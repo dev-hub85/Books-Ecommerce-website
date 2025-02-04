@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class CategoriesComponent {
   categoriesList: string[] = [];
+  isDropdownOpen: boolean = false;
   private categoriesSubscription: Subscription = new Subscription();
 
   private data = inject(BooksService);
@@ -30,6 +31,19 @@ export class CategoriesComponent {
     console.log(this.categoriesList);
   }
 
+  toggleDropdown() {
+    const dropdownTrigger = document.getElementById('dropdownTrigger');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    this.isDropdownOpen = !this.isDropdownOpen;
+    if (this.isDropdownOpen) {
+      dropdownMenu!.classList.add('show');
+      dropdownTrigger!.innerHTML = 'Categories ▲';
+    } else {
+      dropdownMenu!.classList.remove('show');
+      dropdownTrigger!.innerHTML = 'Categories ▼';
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     this.categoriesSubscription = this.data
       .getCategories()
@@ -40,5 +54,6 @@ export class CategoriesComponent {
   moveToBookPage(categoryTitle: string) {
     localStorage.setItem('category_title', categoryTitle);
     this.router.navigate(['books', categoryTitle]);
+    this.toggleDropdown();
   }
 }

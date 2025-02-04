@@ -15,6 +15,9 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent {
   navbarToggler: any;
   navbarCollapse: any;
+  items: number = 0;
+  likes: number = 0;
+  imageUrl: string = 'images/logo.png';
   cartSubscription: Subscription = new Subscription();
   private cartdata = inject(CartService);
   private data = inject(BooksService);
@@ -41,7 +44,4 @@ export class NavbarComponent {
       }
     });
   }
-
-  items: number = 5;
-  imageUrl: string = 'images/logo.png';
 }
