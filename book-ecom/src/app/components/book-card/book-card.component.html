@@ -1,11 +1,16 @@
 <div class="card-design">
   <div class="card">
-    <img
+    <!-- <img
       [src]="book['img']"
       class="card-img-top"
       alt="book Image"
       (click)="moveToBookDetail(book['category'], book['title'])"
-    />
+    /> -->
+    <app-book-style
+      [imageUrl]="book['img']"
+      (click)="moveToBookDetail(book['category'], book['title'])"
+      class="book-style"
+    ></app-book-style>
     <div class="card-body">
       <h5 class="card-title">{{ book["title"] }}</h5>
       <div

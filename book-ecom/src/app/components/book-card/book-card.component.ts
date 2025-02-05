@@ -1,10 +1,11 @@
 import { Component, inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart/cart.service';
+import { BookStyleComponent } from '../book-style/book-style.component';
 
 @Component({
   selector: 'app-book-card',
-  imports: [],
+  imports: [BookStyleComponent],
   templateUrl: './book-card.component.html',
   styleUrl: './book-card.component.scss',
 })
