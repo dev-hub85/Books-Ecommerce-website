@@ -182,6 +182,27 @@ section {
   animation: forwards 0.2s slideright;
 }
 
+p {
+  max-height: 195px;
+  overflow: hidden;
+}
+.price {
+  margin-top: 0px;
+  font-weight: bold;
+  span {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    width: auto;
+    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    .price-c {
+      color: red;
+    }
+  }
+}
+
 @keyframes slideright {
   0% {
     transform: translateX(-10vw);

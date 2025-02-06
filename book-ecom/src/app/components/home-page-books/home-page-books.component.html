@@ -22,7 +22,7 @@
     @if(forUBooks){ @for(book of forUBooks; track book){ @defer(on
     viewport(forYouBooks)) {
     <app-book-card [book]="book"></app-book-card>
-    }@placeholder (minimum 3000ms){
+    }@placeholder (minimum 1000ms){
     <app-book-placeholder></app-book-placeholder>
     } }}
   </div>
@@ -51,7 +51,7 @@
     @if(topBooks){ @for(book of topBooks; track book){ @defer(on
     viewport(allTopBook)){
     <app-book-card [book]="book"></app-book-card>
-    }@placeholder(minimum 3000ms){
+    }@placeholder(minimum 1000ms){
     <app-book-placeholder></app-book-placeholder>
     } }}
   </div>
@@ -80,7 +80,7 @@
     @if(popularBooks){ @for(book of popularBooks; track book){ @defer(on
     viewport(allPopularBook)){
     <app-book-card [book]="book"></app-book-card>
-    }@placeholder(minimum 3000ms) {
+    }@placeholder(minimum 1000ms) {
     <app-book-placeholder></app-book-placeholder>
     } }}
   </div>

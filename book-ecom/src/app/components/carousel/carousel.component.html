@@ -105,8 +105,14 @@
         </div>
       </div>
       <div id="content">
-        <h1>{{book[index]['title']}}</h1>
-        <p>{{book[index]['description']}}</p>
+        <h1>{{ book[index]["title"] }}</h1>
+        <p>{{ book[index]["description"] }}</p>
+        <div class="price">
+          <span
+            ><div>${{ book[index]["price"] }}</div>
+            <div class="price-c">/perbook</div></span
+          >
+        </div>
         <div class="group">
           <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
             <g>

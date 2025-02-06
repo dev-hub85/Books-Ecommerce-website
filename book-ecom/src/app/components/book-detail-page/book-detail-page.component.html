@@ -7,11 +7,17 @@
     </aside>
     <main class="col-lg-7">
       <div class="content-box p-4 rounded-4 shadow-sm">
-        <h2 class="title text-dark fw-bold">{{ bookData[0]["title"] }}</h2>
-
+        <h2 class="title text-dark fw-bold">
+          {{ bookData[0]["title"].toUpperCase() }}
+        </h2>
         <div class="d-flex align-items-center my-3">
           <div class="text-warning d-flex gap-2">
-            <div #starsContainer class="stars-container"></div>
+            <div #starsContainer class="stars-container">
+              @for (icon of starIcons(); track icon){ @if(icon === 'full'){
+              <i class="bi bi-star-fill"></i>
+              } @if(icon === 'half') { <i class="bi bi-star-half"></i>} @if(icon
+              === 'empty') { <i class="bi bi-star"></i>} }
+            </div>
             <span class="rating-text">({{ bookData[0]["stars"] }})</span>
           </div>
           <span class="availability ms-3 text-muted">
