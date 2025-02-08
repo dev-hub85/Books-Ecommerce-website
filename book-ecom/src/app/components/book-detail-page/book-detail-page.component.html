@@ -1,14 +1,18 @@
-<section class="book-detail container py-5">
+<section class="book-detail container py-5" [id]="bookData[0]['id']">
   <div class="row justify-content-center align-items-start">
     <aside class="col-lg-5 text-center">
       <div class="image-container p-3 shadow-sm rounded-4">
-        <img class="book-image" [src]="bookData[0]['img']" alt="Book Cover" />
+        <img
+          class="book-image"
+          [src]="bookData[0]['body']['img']"
+          alt="Book Cover"
+        />
       </div>
     </aside>
     <main class="col-lg-7">
       <div class="content-box p-4 rounded-4 shadow-sm">
         <h2 class="title text-dark fw-bold">
-          {{ bookData[0]["title"].toUpperCase() }}
+          {{ bookData[0]["body"]["title"].toUpperCase() }}
         </h2>
         <div class="d-flex align-items-center my-3">
           <div class="text-warning d-flex gap-2">
@@ -18,27 +22,31 @@
               } @if(icon === 'half') { <i class="bi bi-star-half"></i>} @if(icon
               === 'empty') { <i class="bi bi-star"></i>} }
             </div>
-            <span class="rating-text">({{ bookData[0]["stars"] }})</span>
+            <span class="rating-text"
+              >({{ bookData[0]["body"]["stars"] }})</span
+            >
           </div>
           <span class="availability ms-3 text-muted">
             <i class="fas fa-shopping-basket mx-1"></i>
-            {{ bookData[0]["availability"] }}
+            {{ bookData[0]["body"]["availability"] }}
           </span>
           <span class="text-success ms-2 fw-bold">In stock</span>
         </div>
 
         <p class="price text-primary fs-4 fw-bold">
-          ${{ bookData[0]["price"] }}
+          ${{ bookData[0]["body"]["price"] }}
           <span class="text-muted fs-6">/per book</span>
         </p>
-        <p class="text-muted description">{{ bookData[0]["description"] }}</p>
+        <p class="text-muted description">
+          {{ bookData[0]["body"]["description"] }}
+        </p>
 
         <div class="row">
           <dt class="col-4 fw-bold">Category:</dt>
           <dd class="col-8">
             {{
-              bookData[0]["category"][0].toUpperCase() +
-                bookData[0]["category"].slice(1).toLowerCase()
+              bookData[0]["body"]["category"][0].toUpperCase() +
+                bookData[0]["body"]["category"].slice(1).toLowerCase()
             }}
           </dd>
         </div>
@@ -72,7 +80,7 @@
           <button class="btn btn-warning px-4 py-2 fw-bold">Buy Now</button>
           <button
             class="btn btn-primary d-flex align-items-center px-4 py-2 gap-2 fw-bold"
-            (click)="moveToCart(bookData[0]['title'], numberOfBooks)"
+            (click)="moveToCart(bookData[0]['body']['title'], numberOfBooks)"
           >
             <i class="bi bi-cart-fill cart-image"></i>Add to Cart
           </button>

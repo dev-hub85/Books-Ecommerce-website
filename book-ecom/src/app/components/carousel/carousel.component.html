@@ -94,7 +94,7 @@
         <div class="book-cover" id="img">
           <img
             id="selected-image"
-            [src]="book[index]['img']"
+            [src]="book[index]['body']['img']"
             alt="Book Cover"
           />
           <div class="page1"></div>
@@ -105,11 +105,11 @@
         </div>
       </div>
       <div id="content">
-        <h1>{{ book[index]["title"] }}</h1>
-        <p>{{ book[index]["description"] }}</p>
+        <h1>{{ book[index]['body']["title"] }}</h1>
+        <p>{{ book[index]['body']["description"] }}</p>
         <div class="price">
           <span
-            ><div>${{ book[index]["price"] }}</div>
+            ><div>${{ book[index]['body']["price"] }}</div>
             <div class="price-c">/perbook</div></span
           >
         </div>

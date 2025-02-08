@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../firebase_config';
+import { BooksService } from './services/books/books.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent],
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  // ngOnInit() {
-  //   this.reset();
-  // }
-  // reset() {
-  //   localStorage.removeItem('cart');
-  // }
+  private data = inject(BooksService);
+  async ngOnInit(){
+    const app = initializeApp(firebaseConfig);
+    await this.data.getAllBooks();
+    
+  }
 }

@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { BooksService } from '../../services/books/books.service';
 import { Subscription } from 'rxjs';
+import { Category } from '../../interfaces/category/category';
 
 @Component({
   selector: 'app-categories',
@@ -15,7 +16,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent {
-  categoriesList: string[] = [];
+  categoriesList: Category[] = [];
   isDropdownOpen: boolean = false;
   private categoriesSubscription: Subscription = new Subscription();
 

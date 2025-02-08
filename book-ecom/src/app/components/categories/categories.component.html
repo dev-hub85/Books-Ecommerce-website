@@ -10,8 +10,8 @@
     </li>
     <div class="dropdown-menu" [class.show]="isDropdownOpen">
       @if(categoriesList) { @for(category of categoriesList; track category) {
-      <li class="dropdown-item" (click)="moveToBookPage(category)">
-        {{ category }}
+      <li class="dropdown-item" (click)="moveToBookPage(category['category'])">
+        {{ category["category"] }}
       </li>
       } }
     </div>

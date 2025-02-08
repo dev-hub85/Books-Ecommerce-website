@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { ActivatedRoute } from '@angular/router';
@@ -20,12 +20,13 @@ import { BooksService } from '../../services/books/books.service';
 })
 export class BookPageComponent {
   categoryTitle: string = '';
-  allItems: Books[] = [];
-  categoriesList: any[] = [];
-  category: string = '';
-  currentPage: number = 1;
-  itemsPerPage: number = 20;
-  totalPages: number = 0;
+  allItems = signal<Books[]>([]);
+  categoriesList = signal<Books[]>([]);
+  category = signal<string>('');
+  currentPage = signal<number>(1);
+  itemsPerPage = signal<number>(20);
+  totalPages = signal<number>(0);
+  isLoading = signal<boolean>(true);
 
   private data = inject(BooksService);
   private route = inject(ActivatedRoute);
@@ -33,29 +34,42 @@ export class BookPageComponent {
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.categoryTitle = params.get('categoryTitle')!;
-      this.allItems = this.data.getBooksByCategory(this.categoryTitle);
-      this.totalPages = Math.ceil(this.allItems.length / this.itemsPerPage);
+      this.allItems.set(this.data.getBooksByCategory(this.categoryTitle));
+      this.totalPages.set(
+        Math.ceil(this.allItems.length / this.itemsPerPage())
+      );
       this.paginate();
+      this.isLoading.set(false);
     });
   }
 
+  ngOnDestroy() {
+    this.allItems.set([]);
+    this.categoriesList.set([]);
+    this.category.set('');
+    this.currentPage.set(1);
+    this.itemsPerPage.set(20);
+    this.totalPages.set(0);
+    this.isLoading.set(true);
+  }
+
   paginate() {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.categoriesList = this.allItems.slice(startIndex, endIndex);
+    const startIndex = (this.currentPage() - 1) * this.itemsPerPage();
+    const endIndex = startIndex + this.itemsPerPage();
+    this.categoriesList.set(this.allItems().slice(startIndex, endIndex));
   }
 
   nextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
+    if (this.currentPage() < this.totalPages()) {
+      this.currentPage.set(this.currentPage() + 1);
       this.paginate();
     }
   }
 
   // Navigate to the previous page
   previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
+    if (this.currentPage() > 1) {
+      this.currentPage.set(this.currentPage() + 1);
       this.paginate();
     }
   }

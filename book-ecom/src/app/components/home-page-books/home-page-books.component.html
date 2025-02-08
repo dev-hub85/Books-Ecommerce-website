@@ -19,10 +19,10 @@
     </div>
   </div>
   <div id="foryou" class="allForYouBook">
-    @if(forUBooks){ @for(book of forUBooks; track book){ @defer(on
-    viewport(forYouBooks)) {
+    @if(forUBooks){ @for(book of forUBooks; track book){ @defer(when isLoading)
+    {
     <app-book-card [book]="book"></app-book-card>
-    }@placeholder (minimum 1000ms){
+    }@placeholder {
     <app-book-placeholder></app-book-placeholder>
     } }}
   </div>
@@ -48,10 +48,9 @@
     </div>
   </div>
   <div id="foryou" class="allTopBook">
-    @if(topBooks){ @for(book of topBooks; track book){ @defer(on
-    viewport(allTopBook)){
+    @if(topBooks){ @for(book of topBooks; track book){ @defer(when isLoading){
     <app-book-card [book]="book"></app-book-card>
-    }@placeholder(minimum 1000ms){
+    }@placeholder{
     <app-book-placeholder></app-book-placeholder>
     } }}
   </div>
@@ -77,11 +76,11 @@
     </div>
   </div>
   <div id="foryou" class="popBooks">
-    @if(popularBooks){ @for(book of popularBooks; track book){ @defer(on
-    viewport(allPopularBook)){
+    @for(book of popularBooks; track book){ @defer(when
+    isLoading){
     <app-book-card [book]="book"></app-book-card>
-    }@placeholder(minimum 1000ms) {
+    }@placeholder{
     <app-book-placeholder></app-book-placeholder>
-    } }}
+    } }
   </div>
 </section>

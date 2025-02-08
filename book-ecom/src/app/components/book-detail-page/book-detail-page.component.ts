@@ -35,8 +35,8 @@ export class BookDetailPageComponent {
     this.route.queryParams.subscribe((param) => {
       this.bookTitle = param['bookTitle'];
       this.bookData = this.data.getBookByName(this.bookTitle);
-      if (this.bookData && this.bookData[0]['stars'] !== undefined) {
-        this.calculateStars(this.bookData[0]['stars']);
+      if (this.bookData && this.bookData[0]['body']['stars'] !== undefined) {
+        this.calculateStars(this.bookData[0]['body']['stars']);
         this.generateStarIcons();
       }
     });

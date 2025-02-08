@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BookPlaceholderComponent } from '../book-placeholder/book-placeholder.component';
 import { BookCardComponent } from '../book-card/book-card.component';
 import { Books } from '../../interfaces/books/books';
@@ -14,12 +14,22 @@ export class HomePageBooksComponent {
   forUBooks: Books[] = [];
   topBooks: Books[] = [];
   popularBooks: Books[] = [];
+  isLoading = signal<boolean>(true);
 
   private data = inject(BooksService);
   async ngOnInit() {
-    this.forUBooks = await this.data.getForYouBooks();
-    this.topBooks = this.data.getTopBooks();
-    this.popularBooks = this.data.getPopularBooks();
+    try {
+      this.forUBooks = await this.data.getForYouBooks();
+      this.topBooks = await this.data.getTopBooks();
+      this.popularBooks = await this.data.getPopularBooks();
+      this.isLoading.set(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  ngOnDestroy() {
+    this.isLoading.set(true);
   }
 
   scrollHorizontallyLeft(component: string): void {
