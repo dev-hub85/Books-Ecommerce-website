@@ -24,7 +24,7 @@ export class NavbarComponent {
   private route = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.data.getCategoriesList();
+    this.data.fetchCategoriesList();
     this.cartSubscription = this.cartdata.getCartChanges().subscribe((cart) => {
       this.items = this.cartdata.getTotalQuantity();
     });

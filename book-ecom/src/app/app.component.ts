@@ -7,18 +7,15 @@ import { BooksService } from './services/books/books.service';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    NavbarComponent,
-  ],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   private data = inject(BooksService);
-  async ngOnInit(){
+
+  constructor() {
     const app = initializeApp(firebaseConfig);
-    await this.data.getAllBooks();
-    
+    this.data.fetchAllBooks();
   }
 }

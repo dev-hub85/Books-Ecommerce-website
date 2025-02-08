@@ -2,10 +2,11 @@ import { Component, inject, Input, NgModule } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BookStyleComponent } from "../book-style/book-style.component";
 
 @Component({
   selector: 'app-cart-card',
-  imports: [FormsModule],
+  imports: [FormsModule, BookStyleComponent],
   templateUrl: './cart-card.component.html',
   styleUrl: './cart-card.component.scss',
 })
@@ -15,8 +16,7 @@ export class CartCardComponent {
   private data = inject(CartService);
   private router = inject(Router);
   ngOnInit() {
-    this.quantity = this.data.getItemQuantity(this.book['title']);
-    console.log(this.quantity, this.book);
+    this.quantity = this.data.getItemQuantity(this.book['body']['title']);
   }
 
   removeItem(title: string) {
@@ -28,10 +28,10 @@ export class CartCardComponent {
     });
   }
   onQuantityChange() {
-    if (this.quantity <= 0) {
-      this.data.removeItem(this.book['title']);
+    if (this.quantity <= -1) {
+      this.data.removeItem(this.book['body']['title']);
     } else {
-      this.data.updateItemQuantity(this.book['title'], this.quantity);
+      this.data.updateItemQuantity(this.book['body']['title'], this.quantity);
     }
   }
   incrementQuantity() {

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { BookPlaceholderComponent } from '../book-placeholder/book-placeholder.component';
 import { BookCardComponent } from '../book-card/book-card.component';
 import { Books } from '../../interfaces/books/books';
@@ -17,15 +17,20 @@ export class HomePageBooksComponent {
   isLoading = signal<boolean>(true);
 
   private data = inject(BooksService);
-  async ngOnInit() {
-    try {
-      this.forUBooks = await this.data.getForYouBooks();
-      this.topBooks = await this.data.getTopBooks();
-      this.popularBooks = await this.data.getPopularBooks();
+
+  constructor() {
+    effect(async () => {
+      const [forU, top, popular] = await Promise.all([
+        this.data.fetchForYouBooks(),
+        this.data.fetchTopBooks(),
+        this.data.fetchPopularBooks(),
+      ]);
+      this.forUBooks = forU;
+      this.topBooks = top;
+      this.popularBooks = popular;
+
       this.isLoading.set(false);
-    } catch (error) {
-      console.error(error);
-    }
+    });
   }
 
   ngOnDestroy() {

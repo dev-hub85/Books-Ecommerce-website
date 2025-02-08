@@ -1,55 +1,55 @@
-<div class="card rounded-3 mb-4">
+<div class="card book-card rounded-3 mb-4">
   <div class="card-body p-4">
-    <div class="row d-flex justify-content-between align-items-center">
+    <div class="row align-items-center text-center text-md-start">
+      <!-- Book Image -->
       <div
-        class="col-md-2 col-lg-2 col-xl-2"
+        class="col-12 col-md-2 mb-3 mb-md-0"
         (click)="moveToBookDetail(book()['category'], book()['title'])"
       >
-        <img
-          [src]="book['img']"
-          class="img-fluid rounded-3"
-          alt="Book Image"
-        />
+        <app-book-style [imageUrl]="book['body']['img']"></app-book-style>
       </div>
-      <div class="col-md-3 col-lg-3 col-xl-3">
-        <p class="lead fw-normal mb-2">{{ book["title"] }}</p>
+
+      <div class="col-12 col-md-3 mb-3 mb-md-0">
+        <p class="lead fw-bold mb-2 book-title">{{ book["body"]["title"] }}</p>
       </div>
-      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+
+      <div
+        class="col-12 col-md-3 d-flex justify-content-center align-items-center quantity-control mb-3 mb-md-0"
+      >
         <button
-          data-mdb-button-init
-          data-mdb-ripple-init
-          class="btn btn-link px-2"
+          class="btn btn-outline-secondary btn-sm px-2"
           (click)="decrementQuantity()"
         >
-          <i class="fas fa-minus"></i>
+          <i class="bi bi-dash"></i>
         </button>
-
         <input
-          id="form1"
-          min="0"
-          name="quantity"
+          type="number"
+          class="form-control form-control-sm mx-2 text-center quantity-input"
           [(ngModel)]="quantity"
           (ngModelChange)="onQuantityChange()"
-          type="number"
-          class="form-control form-control-sm"
+          min="0"
         />
-
         <button
-          data-mdb-button-init
-          data-mdb-ripple-init
-          class="btn btn-link px-2"
+          class="btn btn-outline-secondary btn-sm px-2"
           (click)="incrementQuantity()"
         >
-          <i class="fas fa-plus"></i>
+          <i class="bi bi-plus"></i>
         </button>
       </div>
-      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-        <h5 class="mb-0">${{ book["price"] }}</h5>
+
+      <!-- Price -->
+      <div class="col-12 col-md-2 mb-3 mb-md-0">
+        <h5 class="mb-0 book-price">${{ book["body"]["price"] }}</h5>
       </div>
-      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-        <a class="text-danger" (click)="removeItem(book['title'])"
-          ><i class="bi bi-trash-fill"></i
-        ></a>
+
+      <!-- Remove Item -->
+      <div class="col-12 col-md-1 text-center text-md-end">
+        <a
+          class="text-danger remove-item"
+          (click)="removeItem(book['body']['title'])"
+        >
+          <i class="bi bi-trash-fill"></i>
+        </a>
       </div>
     </div>
   </div>

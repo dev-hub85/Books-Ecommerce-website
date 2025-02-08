@@ -14,10 +14,6 @@ export class BookCardComponent {
   private router = inject(Router);
   private data = inject(CartService);
 
-  ngOnInit() {
-    console.log(this.book);
-  }
-
   moveToBookDetail(bookCategory: string, bookTitle: string) {
     this.router.navigate(['/bookDetails', bookCategory], {
       queryParams: { bookTitle },

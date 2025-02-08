@@ -35,10 +35,7 @@
       <div id="main-body1" class="slide">
         <div id="card1"></div>
         <div class="book-cover">
-          <img
-            src="https://books.toscrape.com/media/cache/6b/07/6b07b77236b7c80f42bd90bf325e69f6.jpg"
-            alt="Book Cover"
-          />
+          <img [src]="imgLink[0]" alt="Book Cover" />
           <div class="page1"></div>
           <div class="page2"></div>
           <div class="page3"></div>
@@ -49,10 +46,7 @@
       <div id="main-body2" class="slide">
         <div id="card2"></div>
         <div class="book-cover">
-          <img
-            src="https://books.toscrape.com/media/cache/75/9d/759d9276739200e2cb8101a36449ba20.jpg"
-            alt="Book Cover"
-          />
+          <img [src]="imgLink[1]" alt="Book Cover" />
           <div class="page1"></div>
           <div class="page2"></div>
           <div class="page3"></div>
@@ -63,10 +57,7 @@
       <div id="main-body3" class="slide">
         <div id="card3"></div>
         <div class="book-cover">
-          <img
-            src="https://books.toscrape.com/media/cache/b7/7d/b77d5e56daa3c22822abf1b8affbaef9.jpg"
-            alt="Book Cover"
-          />
+          <img [src]="imgLink[2]" alt="Book Cover" />
           <div class="page1"></div>
           <div class="page2"></div>
           <div class="page3"></div>
@@ -77,10 +68,7 @@
       <div id="main-body4" class="slide">
         <div id="card4"></div>
         <div class="book-cover">
-          <img
-            src="https://books.toscrape.com/media/cache/9f/25/9f25ffe4229a32d1368b3dfe248c3343.jpg"
-            alt="Book Cover"
-          />
+          <img [src]="imgLink[3]" alt="Book Cover" />
           <div class="page1"></div>
           <div class="page2"></div>
           <div class="page3"></div>
@@ -92,11 +80,7 @@
     <div id="content-page">
       <div id="image-container">
         <div class="book-cover" id="img">
-          <img
-            id="selected-image"
-            [src]="book[index]['body']['img']"
-            alt="Book Cover"
-          />
+          <img id="selected-image" [src]="imgLink[index]" alt="Book Cover" />
           <div class="page1"></div>
           <div class="page2"></div>
           <div class="page3"></div>
@@ -105,11 +89,11 @@
         </div>
       </div>
       <div id="content">
-        <h1>{{ book[index]['body']["title"] }}</h1>
-        <p>{{ book[index]['body']["description"] }}</p>
+        <h1>{{ titles[index] }}</h1>
+        <p>{{ description[index] }}</p>
         <div class="price">
           <span
-            ><div>${{ book[index]['body']["price"] }}</div>
+            ><div>${{ price[index] }}</div>
             <div class="price-c">/perbook</div></span
           >
         </div>

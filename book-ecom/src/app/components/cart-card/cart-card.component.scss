@@ -1,3 +1,60 @@
-.text-danger {
+.book-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-image {
+  max-height: 100px;
+  object-fit: cover;
   cursor: pointer;
+}
+
+.book-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-input {
+  max-width: 60px;
+}
+
+.book-price {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.remove-item {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .quantity-control {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .book-title {
+    font-size: 1rem;
+  }
+  .book-price {
+    font-size: 1rem;
+  }
 }
