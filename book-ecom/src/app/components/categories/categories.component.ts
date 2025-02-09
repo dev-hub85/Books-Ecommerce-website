@@ -29,7 +29,6 @@ export class CategoriesComponent {
       .subscribe((categories) => {
         this.categoriesList = categories;
       });
-    console.log(this.categoriesList);
   }
 
   toggleDropdown() {
@@ -38,10 +37,10 @@ export class CategoriesComponent {
     this.isDropdownOpen = !this.isDropdownOpen;
     if (this.isDropdownOpen) {
       dropdownMenu!.classList.add('show');
-      dropdownTrigger!.innerHTML = 'Categories ▲';
+      dropdownTrigger!.innerHTML = 'Categories';
     } else {
       dropdownMenu!.classList.remove('show');
-      dropdownTrigger!.innerHTML = 'Categories ▼';
+      dropdownTrigger!.innerHTML = 'Categories';
     }
   }
 

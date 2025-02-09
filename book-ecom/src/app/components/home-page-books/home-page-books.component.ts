@@ -15,6 +15,28 @@ export class HomePageBooksComponent {
   topBooks: Books[] = [];
   popularBooks: Books[] = [];
   isLoading = signal<boolean>(true);
+  emptyArray: any[] = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+  ];
 
   private data = inject(BooksService);
 
@@ -28,11 +50,9 @@ export class HomePageBooksComponent {
       this.forUBooks = forU;
       this.topBooks = top;
       this.popularBooks = popular;
-
       this.isLoading.set(false);
     });
   }
-
   ngOnDestroy() {
     this.isLoading.set(true);
   }

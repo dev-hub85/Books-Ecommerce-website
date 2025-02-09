@@ -11,7 +11,10 @@
     <div class="dropdown-menu" [class.show]="isDropdownOpen">
       @if(categoriesList) { @for(category of categoriesList; track category) {
       <li class="dropdown-item" (click)="moveToBookPage(category['category'])">
-        {{ category["category"] }}
+        {{
+          category["category"][0].toUpperCase() +
+            category["category"].slice(1).toLowerCase()
+        }}
       </li>
       } }
     </div>

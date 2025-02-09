@@ -27,6 +27,28 @@ export class BookPageComponent {
   itemsPerPage = signal<number>(20);
   totalPages = signal<number>(0);
   isLoading = signal<boolean>(true);
+  emptyArray: any[] = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+  ];
 
   private data = inject(BooksService);
   private route = inject(ActivatedRoute);
@@ -65,8 +87,6 @@ export class BookPageComponent {
       this.paginate();
     }
   }
-
-  // Navigate to the previous page
   previousPage() {
     if (this.currentPage() > 1) {
       this.currentPage.set(this.currentPage() + 1);

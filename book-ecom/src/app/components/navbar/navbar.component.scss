@@ -79,17 +79,20 @@ button:hover {
 }
 
 a {
-  color: black;
-  font-weight: 600;
+  color: #0066ff;
   font-size: 18px;
 }
 
 a:hover {
-  color: gray;
+  color: #0026ff;
 }
 
 a:active {
-  color: rgb(7, 3, 255);
+  color: black;
+}
+
+a:focus {
+  color: black;
 }
 
 img {
@@ -129,7 +132,7 @@ img {
   color: rgb(68, 68, 68) !important;
 }
 
-.collapse{
+.collapse {
   display: flex;
 }
 
@@ -177,7 +180,7 @@ img {
     gap: 0px;
   }
   a {
-    font-size: 14px;
+    font-size: 16px;
   }
   .nav-content {
     margin-left: 0px;
@@ -222,5 +225,11 @@ img {
     100% {
       max-height: 520px;
     }
+  }
+}
+
+@media (max-width: 576px){
+  a{
+    font-size: 14px;
   }
 }

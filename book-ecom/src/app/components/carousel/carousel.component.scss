@@ -1,141 +1,3 @@
-// .carousel-content1,
-// .carousel-content2 {
-//   width: 60vw;
-//   max-width: 700px;
-//   height: 50vh;
-//   max-height: 500px;
-//   background-color: rgb(255, 178, 223);
-//   margin: auto;
-//   margin-top: 50px;
-//   border-top-left-radius: 50px;
-//   border-bottom-left-radius: 50px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   text-align: center;
-//   padding: 20px;
-// }
-
-// .carousel-content2 {
-//   background-color: rgb(253, 211, 120);
-// }
-
-// .carousel-content1 h1,
-// .carousel-content2 h1 {
-//   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-//   color: purple;
-//   font-weight: 600;
-//   font-size: 2rem;
-// }
-
-// .carousel-content2 h1 {
-//   color: rgb(0, 0, 252);
-// }
-
-// .carousel-content1 p,
-// .carousel-content2 p {
-//   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-//   color: rgb(0, 0, 0);
-//   font-size: 1.2rem;
-// }
-
-// .grid-content {
-//   display: grid;
-//   grid-template-columns: auto auto;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 0px;
-// }
-
-// .carousel-image {
-//   width: 20vw;
-//   max-width: 250px;
-//   height: 50vh;
-//   max-height: 400px;
-//   object-fit: cover;
-//   border-top-right-radius: 50px;
-//   border-bottom-right-radius: 50px;
-//   margin-top: 50px;
-// }
-
-// .carousel-pos {
-//   margin: 5% auto;
-// }
-
-// .carousel {
-//   width: 100%;
-//   margin-top: 100px;
-// }
-
-// /* Responsive Design */
-// @media (max-width: 1024px) {
-//   .carousel-content1,
-//   .carousel-content2 {
-//     height: 45vh;
-//     margin-top: 20px;
-//   }
-
-//   .carousel-image {
-//     height: 45vh;
-//     margin-top: 20px;
-//   }
-
-//   .carousel-content1 h1,
-//   .carousel-content2 h1 {
-//     font-size: 1.8rem;
-//   }
-
-//   .carousel-content1 p,
-//   .carousel-content2 p {
-//     font-size: 1rem;
-//   }
-// }
-
-// @media (max-width: 576px) {
-//   .grid-content {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 0px;
-//   }
-
-//   .carousel-content1,
-//   .carousel-content2 {
-//     width: 250px;
-//     height: auto;
-//     max-width: 95%;
-//     text-align: center;
-//     padding: 10px;
-//     border-radius: 20px 20px 0px 0px;
-//     margin-top: 50px;
-//   }
-
-//   .carousel-image {
-//     width: 100%;
-//     height: auto;
-//     object-fit: cover;
-//     border-radius: 20px;
-//     margin-top: 0px;
-//     border-radius: 0px 0px 20px 20px;
-//   }
-
-//   .carousel-content1 h1,
-//   .carousel-content2 h1 {
-//     font-size: 1.7rem;
-//   }
-
-//   .carousel-content1 p,
-//   .carousel-content2 p {
-//     font-size: 1rem;
-//   }
-
-//   .carousel {
-//     margin-top: 50px;
-//   }
-// }
-
 section {
   width: 100%;
   height: 100%;
@@ -183,24 +45,30 @@ section {
 }
 
 p {
+  max-width: 800px;
   max-height: 195px;
   overflow: hidden;
+  padding-left: 10px;
 }
 .price {
-  margin-top: 0px;
   font-weight: bold;
-  span {
-    margin-top: 0px;
-    margin-bottom: 20px;
-    width: auto;
-    font-size: 22px;
-    display: flex;
-    flex-direction: row;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  color: white;
+  div {
     padding: 5px;
-    .price-c {
-      color: red;
-    }
+    border-radius: 10px;
+    background-color: #3674b5;
   }
+}
+.price::after {
+  content: "/perBook";
+  color: #0d0c22;
 }
 
 @keyframes slideright {
@@ -368,45 +236,274 @@ p {
   z-index: 15;
   border: 0.005px solid rgb(179, 177, 177);
 }
-
+h1 {
+  font-size: 38px;
+  color: #3674b5;
+  height: 50px;
+  width: 50vw;
+  overflow: hidden;
+}
 .group {
-  display: flex;
-  line-height: 28px;
-  align-items: center;
   position: relative;
-  max-width: 190px;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px #578fca;
+  transition: all 0.3s ease;
+}
+
+.group:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.group i {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.group:hover i,
+.group:focus-within i {
+  color: #333;
 }
 
 .input {
   width: 100%;
-  height: 40px;
-  line-height: 28px;
-  padding: 0 1rem;
-  padding-left: 2.5rem;
-  border: 2px solid transparent;
-  border-radius: 8px;
+  padding: 12px 15px 12px 45px;
+  font-size: 16px;
+  border: none;
   outline: none;
-  background-color: #f3f3f4;
-  color: #0d0c22;
-  transition: 0.3s ease;
+  border-radius: 30px;
+  background: transparent;
+  color: #333;
+  transition: all 0.3s ease;
 }
 
 .input::placeholder {
-  color: #9e9ea7;
+  color: #aaa;
+  transition: color 0.3s ease;
 }
 
-.input:focus,
-input:hover {
-  outline: none;
-  border-color: rgba(0, 48, 73, 0.4);
-  background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(0 48 73 / 10%);
+.input:focus::placeholder {
+  color: transparent;
 }
 
-.icon {
-  position: absolute;
-  left: 1rem;
-  fill: #9e9ea7;
-  width: 1rem;
-  height: 1rem;
+.input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+@media (max-width: 1050px) {
+  #card1,
+  #card2,
+  #card3,
+  #card4 {
+    width: 20vw;
+    height: 8vh;
+  }
+  .book-cover img {
+    width: 60px;
+    height: 80px;
+  }
+  #selected-image {
+    width: 170px;
+    height: 250px;
+  }
+  h1 {
+    font-size: 30px;
+    height: 37px;
+  }
+  #content {
+    margin-left: 20px;
+  }
+  .price {
+    font-size: 16px;
+  }
+  p {
+    max-width: 70vw;
+  }
+  .group {
+    max-width: 300px;
+    margin-left: 20px;
+  }
+  .group i {
+    font-size: 16px;
+  }
+  .input {
+    padding: 8px 10px 8px 45px;
+    font-size: 16px;
+  }
+  #main-body4 {
+    margin-bottom: 110px;
+  }
+}
+@media (max-width: 900px) {
+  h1 {
+    font-size: 28px;
+    height: 37px;
+  }
+  #content {
+    margin-left: 0px;
+  }
+  .price {
+    font-size: 14px;
+  }
+  p {
+    max-width: 60vw;
+    font-size: 14px;
+    max-height: 170px;
+  }
+  #main-body4 {
+    margin-bottom: 120px;
+  }
+  .group {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 786px) {
+  h1 {
+    font-size: 24px;
+    height: 35px;
+  }
+  #card1,
+  #card2,
+  #card3,
+  #card4 {
+    width: 20vw;
+    height: 8vh;
+  }
+  .book-cover img {
+    width: 55px;
+    height: 75px;
+  }
+  #selected-image {
+    width: 150px;
+    height: 200px;
+  }
+  #content {
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  .price {
+    font-size: 14px;
+  }
+  p {
+    max-width: 60vw;
+    font-size: 14px;
+    margin-left: -5px;
+    max-height: 150px;
+  }
+  #main-body4 {
+    margin-bottom: 120px;
+  }
+  .group {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 650px) {
+  h1 {
+    font-size: 22px;
+    height: 30px;
+  }
+  #card1,
+  #card2,
+  #card3,
+  #card4 {
+    width: 28vw;
+    height: 6vh;
+  }
+  .book-cover img {
+    width: 50px;
+    height: 70px;
+  }
+  #selected-image {
+    width: 150px;
+    height: 200px;
+  }
+  #content {
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  .price {
+    font-size: 14px;
+  }
+  p {
+    max-width: 55vw;
+    font-size: 14px;
+    margin-left: -5px;
+    max-height: 150px;
+  }
+  #main-body4 {
+    margin-bottom: 160px;
+  }
+  .group {
+    max-width: 250px;
+    margin-left: 0px;
+  }
+  .group i {
+    font-size: 14px;
+  }
+  .input {
+    padding: 6px 8px 6px 45px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 22px;
+    height: 30px;
+    max-width: 100%;
+  }
+  #card1,
+  #card2,
+  #card3,
+  #card4 {
+    display: none;
+  }
+  .book-cover img {
+    display: none;
+  }
+  #selected-image {
+    width: 120px;
+    height: 180px;
+    display: block;
+  }
+  #content {
+    width: 90vw;
+    height: 500px;
+    margin-top: 0px;
+    margin-left: -10vw;
+    padding: 20px;
+  }
+  .price {
+    font-size: 14px;
+  }
+  p {
+    max-width: 100vw;
+    font-size: 14px;
+    margin-left: -5px;
+    max-height: 170px;
+  }
+  #main-body4 {
+    margin-bottom: 300px;
+  }
+  .group {
+    max-width: 250px;
+    margin-left: 0px;
+  }
+  .group i {
+    font-size: 14px;
+  }
+  .input {
+    padding: 6px 8px 6px 45px;
+    font-size: 14px;
+  }
 }

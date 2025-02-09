@@ -1,12 +1,10 @@
 <app-carousel></app-carousel>
 <h1>{{ categoryTitle }}</h1>
 <section #categoryData id="grid-section">
-  @if(categoriesList()){ @for(book of categoriesList(); track book){ @defer(when
-  isLoading()) {
+  @defer(when isLoading() == false){ @for(book of categoriesList(); track book){
   <app-book-card [book]="book"></app-book-card>
-  }@placeholder{
-  <app-book-placeholder></app-book-placeholder>
-  } }}
+  }}@placeholder{ @for(array of emptyArray ; track array){
+  <app-book-placeholder></app-book-placeholder>} }
 </section>
 <div class="pagination-container">
   <div class="pagination">
