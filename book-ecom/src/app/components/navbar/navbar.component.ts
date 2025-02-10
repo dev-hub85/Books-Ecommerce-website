@@ -5,10 +5,12 @@ import { BooksService } from '../../services/books/books.service';
 import { CartService } from '../../services/cart/cart.service';
 import { Cart } from '../../interfaces/cart/cart';
 import { Subscription } from 'rxjs';
+import { LoginModalService } from '../../services/loginModal/login-modal.service';
+import { LoginFormComponent } from '../login-form/login-form.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CategoriesComponent, RouterLink],
+  imports: [CategoriesComponent, RouterLink, LoginFormComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
@@ -22,6 +24,7 @@ export class NavbarComponent {
   private cartdata = inject(CartService);
   private data = inject(BooksService);
   private route = inject(ActivatedRoute);
+  private modalService = inject(LoginModalService);
 
   ngOnInit() {
     this.data.fetchCategoriesList();
@@ -43,5 +46,8 @@ export class NavbarComponent {
         this.navbarCollapse.classList.add('show');
       }
     });
+  }
+  openModal(): void {
+    this.modalService!.showModal();
   }
 }

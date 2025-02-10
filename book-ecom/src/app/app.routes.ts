@@ -5,6 +5,7 @@ import { BookDetailPageComponent } from './components/book-detail-page/book-deta
 import { AboutUsPageComponent } from './components/about-us-page/about-us-page.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { CartComponent } from './components/cart/cart.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 export const routes: Routes = [
   {

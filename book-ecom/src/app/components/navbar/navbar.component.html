@@ -20,7 +20,7 @@
             <a class="nav-link" routerLink="contact">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"> Login </a>
+            <a class="nav-link" (click)="openModal()"> Login </a>
           </li>
           <li class="position-relative mx-2" routerLink="cart">
             <i class="bi bi-cart-fill cart-image"></i>
@@ -33,3 +33,4 @@
     </div>
   </nav>
 </div>
+<app-login-form></app-login-form>
