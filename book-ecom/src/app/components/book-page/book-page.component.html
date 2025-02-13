@@ -1,5 +1,4 @@
 <app-carousel></app-carousel>
-<h1>{{ categoryTitle }}</h1>
 <section #categoryData id="grid-section">
   @defer(when isLoading() == false){ @for(book of categoriesList(); track book){
   <app-book-card [book]="book"></app-book-card>

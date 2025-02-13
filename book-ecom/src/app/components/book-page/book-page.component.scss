@@ -12,6 +12,7 @@ h1 {
 }
 
 #grid-section {
+  margin-top: 5%;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1.5fr);
@@ -84,7 +85,7 @@ h1 {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
-  border-radius: 5px;
+  border-radius: 30px;
   transition: background-color 0.3s ease;
   cursor: pointer;
 }

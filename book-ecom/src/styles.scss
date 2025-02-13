@@ -3,3 +3,22 @@
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+:root{
+    /*===== Colores =====*/
+    --first-color:rgb(0, 132, 255);
+    --first-color-dark: rgb(0, 89, 255);
+    --first-color-light: #9ea0ac;
+    --first-color-lighten: #F2F2F2;
+
+    /*===== Font and typography =====*/
+    --body-font: 'Open Sans', sans-serif;
+    
+    --h1-font-size: 1.5rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+
+    @media screen and (min-width: 768px){
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+    }
+}
