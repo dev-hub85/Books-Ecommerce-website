@@ -32,16 +32,7 @@ export class CategoriesComponent {
   }
 
   toggleDropdown() {
-    const dropdownTrigger = document.getElementById('dropdownTrigger');
-    const dropdownMenu = document.getElementById('dropdownMenu');
     this.isDropdownOpen = !this.isDropdownOpen;
-    if (this.isDropdownOpen) {
-      dropdownMenu!.classList.add('show');
-      dropdownTrigger!.innerHTML = 'Categories';
-    } else {
-      dropdownMenu!.classList.remove('show');
-      dropdownTrigger!.innerHTML = 'Categories';
-    }
   }
 
   ngOnChanges(changes: SimpleChanges) {

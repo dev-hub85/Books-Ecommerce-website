@@ -215,7 +215,7 @@ img {
   .collapse.show {
     display: block;
     max-height: 520px;
-    animation: slide-down 1s linear;
+    animation: slide-down 0.3s linear;
   }
 
   @keyframes slide-down {

@@ -118,4 +118,8 @@ export class BookPageComponent {
       this.isLoading = false;
     }
   }
+  ngOnDestroy(){
+    this.isLoading = true;
+    localStorage.removeItem('bookPageState');
+  }
 }
