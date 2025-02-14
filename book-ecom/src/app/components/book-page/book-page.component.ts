@@ -22,11 +22,11 @@ export class BookPageComponent {
   categoryTitle: string = '';
   allItems = signal<Books[]>([]);
   categoriesList = signal<Books[]>([]);
-  category = signal<string>('');
-  currentPage = signal<number>(1);
-  itemsPerPage = signal<number>(20);
-  totalPages = signal<number>(0);
-  isLoading = signal<boolean>(true);
+  category: string = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 20;
+  totalPages: number = 0;
+  isLoading: boolean = true;
   emptyArray: any[] = [
     '1',
     '2',
@@ -54,43 +54,68 @@ export class BookPageComponent {
   private route = inject(ActivatedRoute);
 
   ngOnInit() {
+    this.restoreState();
     this.route.paramMap.subscribe((params) => {
       this.categoryTitle = params.get('categoryTitle')!;
-      this.allItems.set(this.data.getBooksByCategory(this.categoryTitle));
-      this.totalPages.set(
-        Math.ceil(this.allItems.length / this.itemsPerPage())
-      );
-      this.paginate();
-      this.isLoading.set(false);
+      if (!this.allItems.length) {
+        this.allItems.set(this.data.getBooksByCategory(this.categoryTitle));
+        console.log('Data fetched:', this.allItems());
+        this.totalPages = Math.ceil(this.allItems().length / this.itemsPerPage);
+        this.paginate();
+        this.isLoading = false;
+      }
     });
   }
 
-  ngOnDestroy() {
-    this.allItems.set([]);
-    this.categoriesList.set([]);
-    this.category.set('');
-    this.currentPage.set(1);
-    this.itemsPerPage.set(20);
-    this.totalPages.set(0);
-    this.isLoading.set(true);
-  }
-
   paginate() {
-    const startIndex = (this.currentPage() - 1) * this.itemsPerPage();
-    const endIndex = startIndex + this.itemsPerPage();
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
     this.categoriesList.set(this.allItems().slice(startIndex, endIndex));
+    console.log(this.categoriesList());
+    this.saveState();
   }
 
   nextPage() {
-    if (this.currentPage() < this.totalPages()) {
-      this.currentPage.set(this.currentPage() + 1);
+    console.log('clicked');
+    console.log(this.currentPage + 1);
+    if (this.currentPage < this.totalPages) {
+      this.currentPage = this.currentPage + 1;
       this.paginate();
     }
   }
   previousPage() {
-    if (this.currentPage() > 1) {
-      this.currentPage.set(this.currentPage() + 1);
+    console.log('clicked');
+    console.log(this.currentPage - 1);
+    if (this.currentPage > 1) {
+      this.currentPage = this.currentPage - 1;
       this.paginate();
+    }
+  }
+  saveState() {
+    const state = {
+      allItems: this.allItems,
+      currentPage: this.currentPage,
+      categoryTitle: this.categoryTitle,
+    };
+    localStorage.setItem('bookPageState', JSON.stringify(state));
+  }
+
+  restoreState() {
+    const savedState = localStorage.getItem('bookPageState');
+    if (savedState) {
+      const { currentPage, categoryTitle } = JSON.parse(savedState);
+      this.currentPage = currentPage;
+      this.categoryTitle = categoryTitle;
+      if (!this.allItems.length) {
+        this.allItems.set(this.data.getBooksByCategory(this.categoryTitle));
+        console.log('Data fetched:', this.allItems());
+        this.totalPages = Math.ceil(this.allItems().length / this.itemsPerPage);
+        this.paginate();
+      } else {
+        this.totalPages = Math.ceil(this.allItems().length / this.itemsPerPage);
+        this.paginate();
+      }
+      this.isLoading = false;
     }
   }
 }

@@ -57,15 +57,11 @@ export class BooksService {
   async fetchPopularBooks() {
     if (this.allPopularBooks().length)
       return this.getRandomBooks(this.allPopularBooks(), 20);
-    return this.fetchBooksFromJson(
-      this.allPopularBooks,
-      'json/books.json'
-    );
+    return this.fetchBooksFromJson(this.allPopularBooks, 'json/books.json');
   }
 
-  async fetchForYouBooks(){
-    if (this.allData().length)
-      return this.getRandomBooks(this.allData(), 20);
+  async fetchForYouBooks() {
+    if (this.allData().length) return this.getRandomBooks(this.allData(), 20);
     return this.fetchBooksFromJson(this.allData, 'json/books.json');
   }
 
@@ -138,4 +134,5 @@ export class BooksService {
     }
     return shuffled.slice(0, num);
   }
+
 }
