@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, withInMemoryScrolling } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { BookDetailPageComponent } from './components/book-detail-page/book-detail-page.component';

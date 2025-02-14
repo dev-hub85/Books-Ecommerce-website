@@ -16,11 +16,13 @@
           <a class="mb-0"><i class="bi bi-twitter"></i></a>
         </div>
       </div>
-      <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+      <div class="d-flex flex-column p-2 flex-fill bd-highlight mb-3 mb-md-0">
         <h5 class="places">Company</h5>
-        <p class="mb-0">About Us</p>
-        <p class="mb-0">Testimonial</p>
-        <p class="mb-0">Contact</p>
+        <a class="mb-0" routerLink="about">About Us</a>
+        <a class="mb-0" [routerLink]="['']" fragment="testimonial"
+          >Testimonial</a
+        >
+        <a class="mb-0" routerLink="contact">Contact</a>
       </div>
       <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
         <h5 class="places">Contact Us</h5>
@@ -30,7 +32,7 @@
       </div>
       <div class="p-2 flex-fill bd-highlight mb-3 mb-md-0">
         <h5 class="places">Help</h5>
-        <p class="mb-0">Contact Us</p>
+        <a class="mb-0" routerLink="contact">Contact Us</a>
       </div>
     </div>
     <div class="line mb-3 mx-auto"></div>
