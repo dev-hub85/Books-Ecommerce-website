@@ -6,15 +6,18 @@ import { Subscription } from 'rxjs';
 import { Books } from '../../interfaces/books/books';
 import { BooksService } from '../../services/books/books.service';
 import { CartCardComponent } from '../cart-card/cart-card.component';
+import { OrderService } from '../../services/order/order.service';
+import { OrderFormComponent } from '../order-form/order-form.component';
 
 @Component({
   selector: 'app-cart',
-  imports: [FooterComponent, CartCardComponent],
+  imports: [FooterComponent, CartCardComponent, OrderFormComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
 export class CartComponent {
   private data = inject(CartService);
+  private modalService = inject(OrderService);
   cartItems: Cart[] = [];
   bookData: Books[] = [];
   cartSubscription: Subscription = new Subscription();
@@ -33,5 +36,9 @@ export class CartComponent {
 
   ngOnDestroy() {
     this.cartSubscription.unsubscribe();
+  }
+
+  openModal(): void {
+    this.modalService!.showModal();
   }
 }

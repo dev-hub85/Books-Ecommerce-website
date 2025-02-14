@@ -1,8 +1,8 @@
 import { Component, inject, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../firebase_config';
+// import { initializeApp } from 'firebase/app';
+// import { firebaseConfig } from '../firebase_config';
 import { BooksService } from './services/books/books.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent {
   private data = inject(BooksService);
 
   constructor() {
-    const app = initializeApp(firebaseConfig);
+    // const app = initializeApp(firebaseConfig);
     this.data.fetchAllBooks();
   }
 }

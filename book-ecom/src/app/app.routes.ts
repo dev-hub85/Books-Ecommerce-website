@@ -6,6 +6,7 @@ import { AboutUsPageComponent } from './components/about-us-page/about-us-page.c
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { OrderFormComponent } from './components/order-form/order-form.component';
 
 export const routes: Routes = [
   {

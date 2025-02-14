@@ -1,4 +1,4 @@
-<section >
+<section>
   <div class="py-3">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-10 mt-5">
@@ -12,6 +12,7 @@
               data-mdb-button-init
               data-mdb-ripple-init
               class="btn btn-warning btn-block btn-lg"
+              (click)="openModal()"
             >
               Proceed to Pay
             </button>
@@ -27,3 +28,4 @@
   </div>
 </section>
 <app-footer></app-footer>
+<app-order-form></app-order-form>

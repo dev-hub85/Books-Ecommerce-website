@@ -1,0 +1,181 @@
+<div
+  class="modal fade"
+  id="OrderFormModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="OrderFormModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-fullscreen" role="document">
+    <div class="modal-content bg-transparent">
+      <div class="modal-body bg-transparent">
+        <div class="d-flex flex-row justify-content-end align-items-end">
+        </div>
+        <section>
+          <div class="form-container">
+            <h2>Order Form</h2>
+
+            <!-- Product Details Section -->
+            <div class="section-title">Product Details</div>
+            <div class="product-details">
+              <div class="product-item">
+                <span>Product 1 (x1)</span>
+                <span>$100</span>
+              </div>
+              <div class="product-item">
+                <span>Product 2 (x2)</span>
+                <span>$50 each</span>
+              </div>
+              <div class="total-amount">Total Amount: $200</div>
+            </div>
+
+            <!-- User Information Form -->
+            <form (ngSubmit)="onSubmit()" #orderForm="ngForm">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  placeholder="Enter your full name"
+                  required
+                  ngModel
+                  name="fullName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  required
+                  ngModel
+                  name="email"
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="Enter your phone number"
+                  required
+                  ngModel
+                  name="phone"
+                />
+              </div>
+
+              <h3 class="section-title">Address Information</h3>
+              <div class="form-group">
+                <label for="street">Street Address</label>
+                <input
+                  type="text"
+                  id="street"
+                  placeholder="123 Main St"
+                  required
+                  ngModel
+                  name="street"
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input
+                    type="text"
+                    id="city"
+                    placeholder="Enter city"
+                    required
+                    ngModel
+                    name="city"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input
+                    type="text"
+                    id="state"
+                    placeholder="Enter state"
+                    required
+                    ngModel
+                    name="state"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="zip">Zip Code</label>
+                  <input
+                    type="text"
+                    id="zip"
+                    placeholder="Enter zip code"
+                    required
+                    ngModel
+                    name="zip"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <select id="country" required ngModel name="country">
+                    <option value="" disabled selected>Select country</option>
+                    <option value="USA">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="India">India</option>
+                    <option value="Australia">Australia</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="paymentMethod">Payment Method</label>
+                <select
+                  id="paymentMethod"
+                  required
+                  ngModel
+                  name="paymentMethod"
+                  (change)="onPaymentMethodChange($event)"
+                >
+                  <option value="" disabled selected>
+                    Select Payment Method
+                  </option>
+                  <option value="creditCard">Credit/Debit Card</option>
+                  <option value="cod">Cash on Delivery</option>
+                </select>
+              </div>
+
+              <div *ngIf="showCardDetails" class="card-details">
+                <h3 class="section-title">Card Details</h3>
+                <div class="form-group">
+                  <label for="cardNumber">Card Number</label>
+                  <input
+                    type="text"
+                    id="cardNumber"
+                    placeholder="Enter card number"
+                    maxlength="16"
+                  />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="cardExpiry">Expiry Date</label>
+                    <input type="month" id="cardExpiry" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cardCVV">CVV</label>
+                    <input
+                      type="text"
+                      id="cardCVV"
+                      placeholder="CVV"
+                      maxlength="3"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn">Submit Order</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

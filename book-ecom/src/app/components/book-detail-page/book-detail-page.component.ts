@@ -11,10 +11,12 @@ import { FooterComponent } from '../footer/footer.component';
 import { BooksService } from '../../services/books/books.service';
 import { Books } from '../../interfaces/books/books';
 import { CartService } from '../../services/cart/cart.service';
+import { OrderService } from '../../services/order/order.service';
+import { OrderFormComponent } from "../order-form/order-form.component";
 
 @Component({
   selector: 'app-book-detail-page',
-  imports: [FooterComponent],
+  imports: [FooterComponent, OrderFormComponent],
   templateUrl: './book-detail-page.component.html',
   styleUrl: './book-detail-page.component.scss',
 })
@@ -30,6 +32,7 @@ export class BookDetailPageComponent {
   private route = inject(ActivatedRoute);
   private data = inject(BooksService);
   private cartdata = inject(CartService);
+  private modalService = inject(OrderService);
 
   ngOnInit() {
     this.route.queryParams.subscribe((param) => {
@@ -69,5 +72,9 @@ export class BookDetailPageComponent {
 
   moveToCart(book: string, quantity: number) {
     this.cartdata.addToCart(book, quantity);
+  }
+
+  openModal(): void {
+    this.modalService!.showModal();
   }
 }
