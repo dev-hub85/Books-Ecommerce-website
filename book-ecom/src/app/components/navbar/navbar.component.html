@@ -19,9 +19,15 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="contact">Contact</a>
           </li>
+          @if(loggedIn == false){
           <li class="nav-item">
             <a class="nav-link" (click)="openModal()"> Login </a>
           </li>
+          }@else {
+          <li class="nav-item">
+            <a class="nav-link" (click)="openModal()"> Logout </a>
+          </li>
+          }
           <li class="position-relative mx-2" routerLink="cart">
             <i class="bi bi-cart-fill cart-image"></i>
             @if(items){

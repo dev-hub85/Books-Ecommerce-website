@@ -19,35 +19,45 @@ export class NavbarComponent {
   navbarCollapse: any;
   items: number = 0;
   likes: number = 0;
+  loggedIn: any = false;
   imageUrl: string = 'images/logo.png';
   cartSubscription: Subscription = new Subscription();
   private cartdata = inject(CartService);
   private data = inject(BooksService);
   private route = inject(ActivatedRoute);
   private modalService = inject(LoginModalService);
+  loginSubscription: Subscription = new Subscription();
 
   ngOnInit() {
     this.data.fetchCategoriesList();
-    this.cartSubscription = this.cartdata.getCartChanges().subscribe((cart) => {
-      this.items = this.cartdata.getTotalQuantity();
-    });
-  }
-  toggleNavBar() {
     this.navbarToggler = document.querySelector(
       '.navbar-toggler'
     ) as HTMLElement;
     this.navbarCollapse = document.querySelector(
       '#navbarTogglerDemo01'
     ) as HTMLElement;
-    this.navbarToggler?.addEventListener('click', () => {
-      if (this.navbarCollapse.classList.contains('show')) {
-        this.navbarCollapse.classList.remove('show');
-      } else {
-        this.navbarCollapse.classList.add('show');
-      }
+    this.cartSubscription = this.cartdata.getCartChanges().subscribe((cart) => {
+      this.items = this.cartdata.getTotalQuantity();
     });
+    this.loginSubscription = this.modalService
+      .checkStatus()
+      .subscribe((status) => {
+        this.loggedIn = status;
+        if (this.loggedIn == true) {
+          this.modalService.hideModal();
+        }
+        console.log('Login Status Updated:', status);
+      });
+  }
+  toggleNavBar() {
+    if (this.navbarCollapse.classList.contains('show')) {
+      this.navbarCollapse.classList.remove('show');
+    } else {
+      this.navbarCollapse.classList.add('show');
+    }
   }
   openModal(): void {
+    this.toggleNavBar();
     this.modalService!.showModal();
   }
 }

@@ -1,13 +1,22 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoginModalService } from '../../services/loginModal/login-modal.service';
+import { FormsModule, NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login-form',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
 })
 export class LoginFormComponent {
   private modalService = inject(LoginModalService);
+  model: any = {
+    LEmail: '',
+    LPassword: '',
+    SEmail: '',
+    SPassword: '',
+    SCPassword: '',
+  };
+  value: boolean = false;
   ngOnInit() {
     const signUp = document.getElementById('sign-up'),
       signIn = document.getElementById('sign-in'),
@@ -34,5 +43,24 @@ export class LoginFormComponent {
       loginUp!.classList.toggle('none');
     });
     this.modalService!.initializeModal('LoginSignUpModal');
+  }
+
+  submitLoginData(form: NgForm) {
+    console.log('Login attempt:', form.value);
+
+    const loginSuccess = this.modalService.getSignUpData(form.value);
+    if (loginSuccess) {
+      alert('Login successful!');
+    } else {
+      alert('Invalid email or password.');
+    }
+    form.resetForm();
+  }
+
+  submitSignupData(form: NgForm) {
+    console.log(form.value);
+    this.modalService.submitform(form.value);
+    alert('You have Successfully SignedUp');
+    form.resetForm();
   }
 }
