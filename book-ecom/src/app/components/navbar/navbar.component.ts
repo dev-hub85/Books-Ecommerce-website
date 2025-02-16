@@ -60,4 +60,7 @@ export class NavbarComponent {
     this.toggleNavBar();
     this.modalService!.showModal();
   }
+  logOut(){
+    this.modalService!.logout();
+  }
 }

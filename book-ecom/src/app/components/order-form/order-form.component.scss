@@ -2,6 +2,21 @@ section {
   min-height: 100vh;
   margin: auto;
 }
+
+.close {
+  width: 40px;
+  height: 40px;
+  background-color: var(--first-color);
+  border: none;
+  border-radius: 20px;
+  position: relative;
+  i {
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+}
 .form-container {
   background: #ffffff;
   padding: 25px 30px;
@@ -91,6 +106,7 @@ section {
 .btn:hover {
   background: rgb(0, 110, 255);
 }
+
 @media (max-width: 600px) {
   .form-row .form-group {
     flex: 1 1 100%;

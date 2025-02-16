@@ -13,6 +13,7 @@ import { Books } from '../../interfaces/books/books';
 import { CartService } from '../../services/cart/cart.service';
 import { OrderService } from '../../services/order/order.service';
 import { OrderFormComponent } from "../order-form/order-form.component";
+import { Cart } from '../../interfaces/cart/cart';
 
 @Component({
   selector: 'app-book-detail-page',
@@ -28,6 +29,7 @@ export class BookDetailPageComponent {
   emptyStars = signal<number>(0);
   starIcons = signal<string[]>([]);
   numberOfBooks: number = 1;
+  dataofcart = signal<Cart[]>([]);
 
   private route = inject(ActivatedRoute);
   private data = inject(BooksService);
@@ -37,6 +39,7 @@ export class BookDetailPageComponent {
   ngOnInit() {
     this.route.queryParams.subscribe((param) => {
       this.bookTitle = param['bookTitle'];
+      this.dataofcart.set({'name': this.bookTitle,'quantity' : this.numberOfBooks});
       this.bookData = this.data.getBookByName(this.bookTitle);
       if (this.bookData && this.bookData[0]['body']['stars'] !== undefined) {
         this.calculateStars(this.bookData[0]['body']['stars']);

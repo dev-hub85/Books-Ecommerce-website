@@ -76,4 +76,9 @@ export class LoginModalService {
   checkLoggedIn() {
     this.loggedIn$.next(localStorage.getItem('SEmail') ? true : false);
   }
+
+  logout(){
+    sessionStorage.removeItem('SEmail')
+    this.loggedIn$.next(false);
+  }
 }

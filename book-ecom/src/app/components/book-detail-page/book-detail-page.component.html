@@ -95,4 +95,8 @@
   </div>
 </section>
 <app-footer></app-footer>
-<app-order-form></app-order-form>
+<app-order-form
+  [dataofcart].set([
+    { name: bookData[0]['body']['title'], quantity: numberOfBooks }
+  ])
+></app-order-form>
