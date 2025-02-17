@@ -1,10 +1,11 @@
 import { NgIf } from '@angular/common';
-import { Component, inject, Input, signal } from '@angular/core';
+import { Component, effect, inject, Input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OrderService } from '../../services/order/order.service';
 import { CartService } from '../../services/cart/cart.service';
 import { Subscription } from 'rxjs';
 import { Cart } from '../../interfaces/cart/cart';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-form',
@@ -14,23 +15,33 @@ import { Cart } from '../../interfaces/cart/cart';
 })
 export class OrderFormComponent {
   showCardDetails = false;
-  @Input() dataofcart= signal<Cart[]>( []);
+  @Input() dataofcart: Cart[] = [];
   items: number = 0;
   private modalService = inject(OrderService);
   cartSubscription: Subscription = new Subscription();
   private cartdata = inject(CartService);
+  private route = inject(ActivatedRoute);
   cartItems: Cart[] = [];
   Constructor() {
     this.modalService!.initializeModal('OrderFormModal');
+  }
+
+  ngOnChanges() {
+    console.log(this.dataofcart);
   }
 
   ngOnInit() {
     this.cartSubscription = this.cartdata.getCartChanges().subscribe((cart) => {
       this.items = this.cartdata.getTotalQuantity();
       this.cartItems = this.cartdata.getCartData();
-      console.log(this.cartItems);
     });
-    console.log(this.dataofcart)
+    this.route.params.subscribe((params) => {
+      if (params['categoryTitle']) {
+        this.cartItems = [];
+      } else {
+        this.dataofcart = [];
+      }
+    });
   }
 
   onPaymentMethodChange(event: Event) {

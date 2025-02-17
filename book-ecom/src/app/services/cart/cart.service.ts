@@ -19,14 +19,18 @@ export class CartService {
     }
   }
 
-  addToCart(title: string, quantity: number) {
+  addToCart(title: string, quantity: number, priceofbook: number) {
     const existingBook = this.cartData().find(
       (book: { name: string }) => book.name === title
     );
     if (existingBook) {
       existingBook.quantity += quantity;
+      existingBook.price += priceofbook;
     } else {
-      this.cartData.update((cart) => [...cart, { name: title, quantity: 1 }]);
+      this.cartData.update((cart) => [
+        ...cart,
+        { name: title, quantity: 1, price: priceofbook },
+      ]);
     }
     const updatedCart = this.cartData();
     this.cartSubject.next(updatedCart);

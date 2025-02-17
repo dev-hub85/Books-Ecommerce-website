@@ -26,14 +26,19 @@
             <!-- Product Details Section -->
             <div class="section-title">Product Details</div>
             <div class="product-details">
+              @if(dataofcart.length != 0){
               <div class="product-item">
-                <span>Product 1 (x1)</span>
-                <span>$100</span>
+                <span>{{ dataofcart[0]["name"] }}</span>
+                <span>{{ dataofcart[0]["quantity"] }}</span>
+                <span>${{ dataofcart[0]["price"] }}</span>
               </div>
+              } @if(cartItems.length != 0){ @for(cart of cartItems; track cart){
               <div class="product-item">
-                <span>Product 2 (x2)</span>
-                <span>$50 each</span>
+                <span>{{ cart["name"] }}</span>
+                <span>{{ cart["quantity"] }}</span>
+                <span>${{ cart["price"] }}</span>
               </div>
+              } }
               <div class="total-amount">Total Amount: $200</div>
             </div>
 

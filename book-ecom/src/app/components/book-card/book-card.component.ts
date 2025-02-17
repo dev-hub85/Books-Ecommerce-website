@@ -13,13 +13,15 @@ export class BookCardComponent {
   @Input() book: any = {};
   private router = inject(Router);
   private data = inject(CartService);
+  priceofbook : number = 0;
 
   moveToBookDetail(bookCategory: string, bookTitle: string) {
     this.router.navigate(['/bookDetails', bookCategory], {
       queryParams: { bookTitle },
     });
   }
-  moveToCart(book: string, quantity: number) {
-    this.data.addToCart(book, quantity);
+  moveToCart(book: string, quantity: number , price: number) {
+    this.priceofbook = price * quantity;
+    this.data.addToCart(book, quantity,this.priceofbook);
   }
 }
