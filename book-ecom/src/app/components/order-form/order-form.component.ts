@@ -52,6 +52,9 @@ export class OrderFormComponent {
     }
   }
 
+  calculatePrice(){
+    return this.cartItems.reduce((total, book) => total + book.price, 0);
+  }
   onSubmit() {
     alert('Order submitted successfully!');
   }

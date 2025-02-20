@@ -16,6 +16,8 @@ import { OrderService } from '../../services/order/order.service';
 import { OrderFormComponent } from '../order-form/order-form.component';
 import { Cart } from '../../interfaces/cart/cart';
 import { v4 as uuidv4 } from 'uuid';
+import { LoginModalService } from '../../services/loginModal/login-modal.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-book-detail-page',
@@ -32,12 +34,15 @@ export class BookDetailPageComponent {
   starIcons = signal<[string, string][]>([]); // Each star gets a unique ID
   numberOfBooks: number = 1;
   price: number = 0;
+  loggedIn: boolean = false;
   dataofcart = signal<Cart[]>([]);
 
   private route = inject(ActivatedRoute);
   private data = inject(BooksService);
   private cartdata = inject(CartService);
   private modalService = inject(OrderService);
+  private loginService = inject(LoginModalService);
+  loginSubscription: Subscription = new Subscription();
 
   ngOnInit() {
     this.route.queryParams.subscribe((param) => {
@@ -60,6 +65,11 @@ export class BookDetailPageComponent {
         }
       }
     });
+    this.loginSubscription = this.loginService
+      .checkStatus()
+      .subscribe((status) => {
+        this.loggedIn = status;
+      });
   }
 
   calculateStars(stars: number) {
@@ -118,6 +128,12 @@ export class BookDetailPageComponent {
   }
 
   openModal(): void {
-    this.modalService!.showModal();
+    if (this.loggedIn == true) {
+      this.loginService.hideModal();
+      this.modalService!.showModal();
+    } else {
+      this.loginService.showModal();
+      this.modalService!.hideModal();
+    }
   }
 }
