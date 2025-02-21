@@ -36,6 +36,7 @@ export class CartComponent {
         this.bookData.push(this.dataOfBooks.getBookByName(item['name'])[0]);
       });
     });
+    this.loginService.checkLoggedIn();
     this.loginSubscription = this.loginService
       .checkStatus()
       .subscribe((status) => {
@@ -48,12 +49,16 @@ export class CartComponent {
   }
 
   openModal(): void {
-    if (this.loggedIn == true) {
-      this.loginService.hideModal();
-      this.modalService!.showModal();
-    } else {
-      this.loginService.showModal();
-      this.modalService!.hideModal();
-    }
+    this.loginService.checkStatus().subscribe((status) => {
+      this.loggedIn = status;
+      console.log(this.loggedIn);
+      if (this.loggedIn) {
+        this.loginService.hideModal();
+        this.modalService.showModal();
+      } else {
+        this.loginService.showModal();
+        this.modalService.hideModal();
+      }
+    });
   }
 }

@@ -74,11 +74,12 @@ export class LoginModalService {
   }
 
   checkLoggedIn() {
-    this.loggedIn$.next(localStorage.getItem('SEmail') ? true : false);
+    const email = sessionStorage.getItem('SEmail');
+    this.loggedIn$.next(!!email);
   }
 
-  logout(){
-    sessionStorage.removeItem('SEmail')
+  logout() {
+    sessionStorage.removeItem('SEmail');
     this.loggedIn$.next(false);
   }
 }

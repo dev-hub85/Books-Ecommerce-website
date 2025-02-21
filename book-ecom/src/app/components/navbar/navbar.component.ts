@@ -61,6 +61,8 @@ export class NavbarComponent {
     this.modalService!.showModal();
   }
   logOut(){
+    alert("Logged Out Successfully");
     this.modalService!.logout();
+    this.toggleNavBar()
   }
 }

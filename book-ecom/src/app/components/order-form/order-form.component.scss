@@ -75,15 +75,24 @@ section {
   margin-bottom: 20px;
 }
 .product-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  display: grid;
+  height: auto;
+  grid-template-columns: 33% 33% 33%;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
+
+.title {
+  height: 30px;
+  overflow: hidden;
+}
+
 .product-item:last-child {
   margin-bottom: 0;
 }
 .total-amount {
-  text-align: right;
+  text-align: center;
   font-weight: bold;
   font-size: 16px;
   margin-top: 10px;
@@ -105,6 +114,9 @@ section {
 }
 .btn:hover {
   background: rgb(0, 110, 255);
+}
+section {
+  padding-top: 5%;
 }
 
 @media (max-width: 600px) {

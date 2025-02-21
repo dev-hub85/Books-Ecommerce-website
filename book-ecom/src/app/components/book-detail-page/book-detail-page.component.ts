@@ -65,6 +65,7 @@ export class BookDetailPageComponent {
         }
       }
     });
+    this.loginService.checkLoggedIn(); 
     this.loginSubscription = this.loginService
       .checkStatus()
       .subscribe((status) => {
@@ -128,12 +129,15 @@ export class BookDetailPageComponent {
   }
 
   openModal(): void {
-    if (this.loggedIn == true) {
+    this.loginService.checkStatus().subscribe((status) => {
+    this.loggedIn = status;
+    console.log(this.loggedIn)
+    if (this.loggedIn) {
       this.loginService.hideModal();
-      this.modalService!.showModal();
+      this.modalService.showModal();
     } else {
       this.loginService.showModal();
-      this.modalService!.hideModal();
+      this.modalService.hideModal();
     }
-  }
+  });}
 }

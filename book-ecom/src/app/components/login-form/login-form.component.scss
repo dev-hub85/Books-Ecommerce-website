@@ -182,8 +182,18 @@ button {
 @media screen and (max-width: 576px) {
   .login {
     &__forms {
-      width: 348px;
+      width: 100%;
       justify-self: center;
+    }
+  }
+}
+@media screen and (max-width: 484px) {
+  .login {
+    margin-left: -10%;
+    &__forms {
+      width: 300px;
+      justify-self: center;
+      margin-left: -10%;
     }
   }
 }
