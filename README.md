@@ -14,12 +14,12 @@
 
 <h2>Images for Mobile:</h2>
 <img src="./images/carousel2.jpg" height="400px" width="250px"></img>
-<img src="./images/home1.jpg"></img>
-<img src="./images/testimonial 2.jpg"></img>
-<img src="./images/signup2.jpg"></img>
-<img src="./images/category3.jpg"></img>
-<img src="./images/contact2.jpg"></img>
-<img src="./images/details4.jpg"></img>
-<img src="./images/details2.jpg"></img>
-<img src="./images/order3 .jpg"></img>
-<img src="./images/cart.jpg"></img>
+<img src="./images/home1.jpg" height="400px" width="250px"></img>
+<img src="./images/testimonial 2.jpg" height="400px" width="250px"></img>
+<img src="./images/signup2.jpg" height="400px" width="250px"></img>
+<img src="./images/category3.jpg" height="400px" width="250px"></img>
+<img src="./images/contact2.jpg" height="400px" width="250px"></img>
+<img src="./images/details4.jpg" height="400px" width="250px"></img>
+<img src="./images/details2.jpg" height="400px" width="250px"></img>
+<img src="./images/order3 .jpg" height="400px" width="250px"></img>
+<img src="./images/cart.jpg" height="400px" width="250px"></img>
