@@ -13,7 +13,7 @@
 <img src="./images/order.png" width="500px" height="250px"></img>
 
 <h2>Images for Mobile:</h2>
-<div style="display: grid; margin: auto; ">
+<div style="display: grid; margin: auto; justify-content: center;">
 <img src="./images/carousel2.jpg" height="400px" width="250px"></img>
 <img src="./images/home1.jpg" height="400px" width="250px"></img>
 <img src="./images/testimonial 2.jpg" height="400px" width="250px"></img>
