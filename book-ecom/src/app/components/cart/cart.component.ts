@@ -27,7 +27,6 @@ export class CartComponent {
   private loginService = inject(LoginModalService);
   loginSubscription: Subscription = new Subscription();
   ngOnInit() {
-    console.log(this.bookData);
     this.cartSubscription = this.data.getCartChanges().subscribe((cart) => {
       this.cartItems = cart;
       this.bookData = [];
@@ -37,11 +36,6 @@ export class CartComponent {
       });
     });
     this.loginService.checkLoggedIn();
-    this.loginSubscription = this.loginService
-      .checkStatus()
-      .subscribe((status) => {
-        this.loggedIn = status;
-      });
   }
 
   ngOnDestroy() {
@@ -51,7 +45,6 @@ export class CartComponent {
   openModal(): void {
     this.loginService.checkStatus().subscribe((status) => {
       this.loggedIn = status;
-      console.log(this.loggedIn);
       if (this.loggedIn) {
         this.loginService.hideModal();
         this.modalService.showModal();

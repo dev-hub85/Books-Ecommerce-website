@@ -63,9 +63,23 @@
         <div class="price">
           <div>${{ price[index] }}</div>
         </div>
-        <form class="group">
-          <i class="bi bi-search"></i>
-          <input class="input" type="search" placeholder="Search" />
+        <form
+          class="group"
+          id="search"
+          #searchForm="ngForm"
+          (ngSubmit)="findBook(searchForm.value)"
+        >
+          <i class="bi bi-search" (click)="findBook(searchForm.value)"></i>
+          <input
+            class="input"
+            type="search"
+            name="Booksearch"
+            id="Booksearch"
+            #Booksearch="ngModel"
+            [(ngModel)]="model.name"
+            required
+            placeholder="Search"
+          />
         </form>
       </div>
     </div>

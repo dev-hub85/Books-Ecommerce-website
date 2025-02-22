@@ -118,7 +118,7 @@ export class BookPageComponent {
       this.isLoading = false;
     }
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.isLoading = true;
     localStorage.removeItem('bookPageState');
   }

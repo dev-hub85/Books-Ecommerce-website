@@ -24,7 +24,6 @@ export class NavbarComponent {
   cartSubscription: Subscription = new Subscription();
   private cartdata = inject(CartService);
   private data = inject(BooksService);
-  private route = inject(ActivatedRoute);
   private modalService = inject(LoginModalService);
   loginSubscription: Subscription = new Subscription();
 

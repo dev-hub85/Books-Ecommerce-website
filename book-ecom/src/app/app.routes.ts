@@ -7,6 +7,7 @@ import { ContactPageComponent } from './components/contact-page/contact-page.com
 import { CartComponent } from './components/cart/cart.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
+import { SearchComponent } from './components/search/search.component';
 
 export const routes: Routes = [
   {
@@ -32,5 +33,9 @@ export const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+  },
+  {
+    path: 'search/:bookTitle',
+    component: SearchComponent,
   },
 ];

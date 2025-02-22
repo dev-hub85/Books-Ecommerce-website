@@ -1,9 +1,9 @@
-import { Component, effect, inject } from '@angular/core';
-import { Books } from '../../interfaces/books/books';
-import { BooksService } from '../../services/books/books.service';
+import { Component, inject } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-carousel',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
 })
@@ -32,9 +32,18 @@ export class CarouselComponent {
   price: number[] = [22.65, 14.07, 43.29, 28.09];
 
   private animationInterval: any;
+  model: any = {
+    name: '',
+  };
+  private router = inject(Router);
 
   ngOnInit() {
     this.animate();
+  }
+
+  findBook(formData: any) {
+    console.log(formData);
+    this.router.navigate(['/search/', formData.Booksearch]);
   }
   animate() {
     const book = document.getElementsByClassName('slide');

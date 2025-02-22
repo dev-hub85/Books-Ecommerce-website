@@ -66,11 +66,6 @@ export class BookDetailPageComponent {
       }
     });
     this.loginService.checkLoggedIn(); 
-    this.loginSubscription = this.loginService
-      .checkStatus()
-      .subscribe((status) => {
-        this.loggedIn = status;
-      });
   }
 
   calculateStars(stars: number) {

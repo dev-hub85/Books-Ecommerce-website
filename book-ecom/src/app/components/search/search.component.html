@@ -1,0 +1,8 @@
+<app-carousel></app-carousel>
+<section #categoryData id="grid-section">
+  @defer(when book.length > 0){ @for(book of book; track book){
+  <app-book-card [book]="book"></app-book-card>
+  }}@placeholder{ @for(array of emptyArray ; track array){
+  <app-book-placeholder></app-book-placeholder>} }
+</section>
+<app-footer></app-footer>
