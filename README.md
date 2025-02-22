@@ -1,7 +1,7 @@
 <h1>Book Ecommerce Website</h1>
 <p>A Webiste for Book Store Made using Angular. This Website Works on the Local Storage yet only.<p>
 <h2>Images for Desktop:</h2>
-<img src="./images/carousel.png"></img>
+<img src="./images/carousel.png" width="500px" height="250px"></img>
 <img src="./images/sign in.png"></img>
 <img src="./images/home.png"></img>
 <img src="./images/testimonial.png"></img>
