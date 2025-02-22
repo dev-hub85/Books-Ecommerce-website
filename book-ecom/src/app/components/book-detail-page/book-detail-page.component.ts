@@ -65,7 +65,6 @@ export class BookDetailPageComponent {
         }
       }
     });
-    this.loginService.checkLoggedIn(); 
   }
 
   calculateStars(stars: number) {
@@ -124,15 +123,17 @@ export class BookDetailPageComponent {
   }
 
   openModal(): void {
+    this.loginService.checkLoggedIn();
     this.loginService.checkStatus().subscribe((status) => {
-    this.loggedIn = status;
-    console.log(this.loggedIn)
-    if (this.loggedIn) {
-      this.loginService.hideModal();
-      this.modalService.showModal();
-    } else {
-      this.loginService.showModal();
-      this.modalService.hideModal();
-    }
-  });}
+      this.loggedIn = status;
+      console.log(this.loggedIn);
+      if (this.loggedIn) {
+        this.loginService.hideModal();
+        this.modalService.showModal();
+      } else {
+        this.loginService.showModal();
+        this.modalService.hideModal();
+      }
+    });
+  }
 }

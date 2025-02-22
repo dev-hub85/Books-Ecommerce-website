@@ -30,19 +30,22 @@
               <div class="product-item">
                 <span class="title">{{ dataofcart[0]["name"] }}</span>
                 <span class="quantity">{{ dataofcart[0]["quantity"] }}</span>
-                <span class="price">${{ dataofcart[0]["price"] }}</span>
+                <span class="price"
+                  >${{ dataofcart[0]["price"].toFixed(2) }}</span
+                >
               </div>
               } @if(cartItems.length != 0){ @for(cart of cartItems; track cart){
               <div class="product-item">
                 <span class="title">{{ cart["name"] }}</span>
                 <span class="quantity">{{ cart["quantity"] }}</span>
-                <span class="price">${{ cart["price"] }}</span>
+                <span class="price">${{ cart["price"].toFixed(2) }}</span>
               </div>
               } }
               <div class="total-amount">
                 Total Amount: @if(dataofcart.length != 0){$
-                {{dataofcart[0]['price']}}}@if(cartItems.length != 0){$
-                {{ calculatePrice() }}
+                {{ dataofcart[0]["price"].toFixed(2) }}}@if(cartItems.length !=
+                0){$
+                {{ calculatePrice().toFixed(2) }}
                 }
               </div>
             </div>

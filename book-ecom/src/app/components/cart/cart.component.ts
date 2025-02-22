@@ -35,7 +35,6 @@ export class CartComponent {
         this.bookData.push(this.dataOfBooks.getBookByName(item['name'])[0]);
       });
     });
-    this.loginService.checkLoggedIn();
   }
 
   ngOnDestroy() {
@@ -43,6 +42,7 @@ export class CartComponent {
   }
 
   openModal(): void {
+    this.loginService.checkLoggedIn();
     this.loginService.checkStatus().subscribe((status) => {
       this.loggedIn = status;
       if (this.loggedIn) {
