@@ -13,7 +13,7 @@
 <img src="./images/order.png"></img>
 
 <h2>Images for Mobile:</h2>
-<img src="./images/carousel2.jpg" height="400px" width="300px"></img>
+<img src="./images/carousel2.jpg" height="400px" width="250px"></img>
 <img src="./images/home1.jpg"></img>
 <img src="./images/testimonial 2.jpg"></img>
 <img src="./images/signup2.jpg"></img>
